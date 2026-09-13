@@ -1,0 +1,43 @@
+[tool.poetry]
+name = "agentic-retrieval"
+version = "0.1.0"
+description = "Offline RL + retrieval experiments"
+authors = ["Hana Zouari <zouari01@ads.uni-passau.de>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.scripts]
+# Uncomment and adjust once you have src/main.py with a main() function
+# agentic-retrieval = "src.main:main"
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.14"
+numpy = "^2.0"
+sentence-transformers = {version = "^5.2.3", python = ">=3.10,<3.14"}
+openai = "^2.24.0"
+requests = "^2.32.0"
+scipy = "^1.13.0"
+python-dotenv = "^1.2.2"
+tabulate = "^0.10.0"
+ir-datasets = "^0.5.11"
+matplotlib = "^3.10.9"
+pandas = "^3.0.3"
+d3rlpy = "^2.8.1"
+torch = { version = "2.10.0+cu126", source = "pytorch-cu126" }
+torchvision = { version = "0.25.0+cu126", source = "pytorch-cu126" }
+torchaudio = { version = "2.10.0+cu126", source = "pytorch-cu126" }
+seaborn = "^0.13.2"
+
+[[tool.poetry.source]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+priority = "explicit"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "ipykernel (>=7.2.0,<8.0.0)"
+]

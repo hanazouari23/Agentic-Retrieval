@@ -1,0 +1,62 @@
+# --- Poetry / packaging ---
+# Virtual environment (Poetry creates .venv by default when in-project)
+.venv/
+venv/
+env/
+
+# Build and distribution artifacts
+dist/
+build/
+*.egg-info/
+*.egg
+
+# Compiled Python files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# --- Environment & secrets ---
+# Local environment / secrets (DO NOT commit)
+.env
+.env.local
+.env.*.local
+*.env
+
+# --- IDE / editors ---
+# VS Code
+.vscode/
+*.code-workspace
+
+# PyCharm / IntelliJ
+.idea/
+*.iml
+
+# --- OS / editor noise ---
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# --- Logs & temp ---
+*.log
+logs/
+tmp/
+temp/
+
+# --- Jupyter / notebooks (optional) ---
+# Uncomment if you don't want to track notebooks
+# *.ipynb_checkpoints/
+# *.ipynb
+
+# --- Data / large artifacts (adjust as needed) ---
+# Uncomment and adapt if you generate large datasets or models locally
+# data/
+# checkpoints/
+# models/
