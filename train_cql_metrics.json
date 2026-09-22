@@ -1,0 +1,82 @@
+{
+  "config": {
+    "trajectories_path": "data/trajectories_expert_5k.csv",
+    "random_seed": 42,
+    "test_ratio": 0.2,
+    "hidden_dims": [
+      256,
+      128
+    ],
+    "batch_size": 256,
+    "gamma": 0.99,
+    "learning_rate": 0.0003,
+    "n_critics": 2,
+    "target_update_interval": 8000,
+    "cql_alpha": 1.0,
+    "n_steps": 50000,
+    "n_steps_per_epoch": 10000
+  },
+  "data_stats": {
+    "total_transitions": 8782,
+    "train_transitions": 7010,
+    "num_test_queries": 1000,
+    "num_actions": 4
+  },
+  "epoch_metrics": [
+    {
+      "epoch": 1,
+      "metrics": {
+        "time_sample_batch": 0.005834804439544677,
+        "time_algorithm_update": 0.018779314064979555,
+        "loss": 0.25732419556509706,
+        "td_loss": 0.04550081622281577,
+        "conservative_loss": 0.21182337923175656,
+        "time_step": 0.024811531400680542
+      }
+    },
+    {
+      "epoch": 2,
+      "metrics": {
+        "time_sample_batch": 0.004011096429824829,
+        "time_algorithm_update": 0.012888357281684875,
+        "loss": 0.010734116637217812,
+        "td_loss": 0.007782830910757184,
+        "conservative_loss": 0.002951285722234752,
+        "time_step": 0.01705189266204834
+      }
+    },
+    {
+      "epoch": 3,
+      "metrics": {
+        "time_sample_batch": 0.004498243927955627,
+        "time_algorithm_update": 0.014542988038063049,
+        "loss": 0.006393818461161572,
+        "td_loss": 0.005454883564880583,
+        "conservative_loss": 0.0009389348951808642,
+        "time_step": 0.019208954691886902
+      }
+    },
+    {
+      "epoch": 4,
+      "metrics": {
+        "time_sample_batch": 0.0048182315587997435,
+        "time_algorithm_update": 0.015411110639572144,
+        "loss": 0.004791699932469055,
+        "td_loss": 0.004264350429148181,
+        "conservative_loss": 0.0005273495025045122,
+        "time_step": 0.02041994459629059
+      }
+    },
+    {
+      "epoch": 5,
+      "metrics": {
+        "time_sample_batch": 0.005712998199462891,
+        "time_algorithm_update": 0.01846210708618164,
+        "loss": 0.004063695082403137,
+        "td_loss": 0.0037045369323081105,
+        "conservative_loss": 0.0003591581493135891,
+        "time_step": 0.024383544874191285
+      }
+    }
+  ]
+}

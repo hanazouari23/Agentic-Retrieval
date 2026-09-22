@@ -49,6 +49,7 @@ $RECYCLE.BIN/
 logs/
 tmp/
 temp/
+d3rlpy_logs/
 
 # --- Jupyter / notebooks (optional) ---
 # Uncomment if you don't want to track notebooks

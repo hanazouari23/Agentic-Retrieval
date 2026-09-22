@@ -1,0 +1,110 @@
+{
+  "model_path": "cql_policy.pt",
+  "data_path": "data/trajectories_expert_5k.csv",
+  "config": {
+    "random_seed": 42,
+    "test_ratio": 0.2,
+    "hidden_dims": [
+      256,
+      128
+    ],
+    "gamma": 0.99,
+    "learning_rate": 0.0003,
+    "cql_alpha": 1.0
+  },
+  "data_stats": {
+    "total_transitions": 8782,
+    "train_transitions": 7010,
+    "test_transitions": 1772,
+    "num_actions": 4,
+    "num_test_queries": 1000
+  },
+  "overall_test_accuracy": 0.600451467268623,
+  "baseline_accuracies": {
+    "majority_class": 0.5112866817155757,
+    "always_stop": 0.5112866817155757
+  },
+  "per_step_accuracy": {
+    "0": 0.58,
+    "1": 0.5745614035087719,
+    "2": 0.7025316455696202
+  },
+  "per_action_metrics": {
+    "0": {
+      "precision": 0.3978,
+      "recall": 0.3893,
+      "f1": 0.3935,
+      "tp": 146,
+      "fp": 221,
+      "fn": 229
+    },
+    "1": {
+      "precision": 0.5165,
+      "recall": 0.4771,
+      "f1": 0.496,
+      "tp": 125,
+      "fp": 117,
+      "fn": 137
+    },
+    "2": {
+      "precision": 0.25,
+      "recall": 0.1223,
+      "f1": 0.1642,
+      "tp": 28,
+      "fp": 84,
+      "fn": 201
+    },
+    "3": {
+      "precision": 0.7279,
+      "recall": 0.8444,
+      "f1": 0.7818,
+      "tp": 765,
+      "fp": 286,
+      "fn": 141
+    }
+  },
+  "confusion_matrix": [
+    [
+      146,
+      70,
+      31,
+      128
+    ],
+    [
+      62,
+      125,
+      23,
+      52
+    ],
+    [
+      66,
+      29,
+      28,
+      106
+    ],
+    [
+      93,
+      18,
+      30,
+      765
+    ]
+  ],
+  "valid_action_violations": 4,
+  "valid_action_violation_rate": 0.002257336343115124,
+  "trajectory_exact_match_rate": 0.522,
+  "action_distribution_test": {
+    "expert": {
+      "0": 0.21162528216704288,
+      "1": 0.14785553047404063,
+      "2": 0.12923250564334085,
+      "3": 0.5112866817155757
+    },
+    "policy": {
+      "0": 0.20711060948081264,
+      "1": 0.136568848758465,
+      "2": 0.06320541760722348,
+      "3": 0.5931151241534989
+    }
+  },
+  "action_distribution_l1_distance": 0.08182844243792321
+}
