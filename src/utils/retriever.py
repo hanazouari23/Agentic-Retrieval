@@ -8,7 +8,9 @@ from dotenv import load_dotenv
 
 logger = logging.getLogger(__name__)
 
-ENDPOINT = os.getenv("RETRIEVAL_ENDPOINT")
+load_dotenv()
+
+ENDPOINT = os.getenv("RETRIEVAL_ENDPOINT", "").strip()
 MY_USERNAME = os.getenv("MY_USERNAME")
 MY_PASSWORD = os.getenv("MY_PASSWORD")
 
