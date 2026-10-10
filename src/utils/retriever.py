@@ -1,121 +1,148 @@
 import logging
 import os
-from typing import List, Dict, Any, Tuple
+from typing import List, Dict, Any, Tuple, Optional
 
 import numpy as np
 import requests
 from dotenv import load_dotenv
 
+
 logger = logging.getLogger(__name__)
+
 
 load_dotenv()
 
-ENDPOINT = os.getenv("RETRIEVAL_ENDPOINT", "").strip()
-MY_USERNAME = os.getenv("MY_USERNAME")
-MY_PASSWORD = os.getenv("MY_PASSWORD")
+
+CHATNOIR_API_URL = os.getenv(
+    "CHATNOIR_API_URL",
+    "https://www.chatnoir.eu/api/v1/_search",
+).strip()
+CHATNOIR_API_KEY = os.getenv("CHATNOIR_API_KEY", "").strip()
 
 
 class Retriever:
     """
-    Retriever that accesses OpenSearch endpoint to retrieve top 50 documents
-    from the msmarco-v2.1-segmented index using BM25 matching.
+    Retriever that queries the ChatNoir REST API and returns the top-k
+    documents from the MS MARCO V2.1 segmented index using BM25.
     """
-    
-    def __init__(self, endpoint: str = ENDPOINT,
-                 username: str = MY_USERNAME,
-                 password: str = MY_PASSWORD,
-                 index_field: str = "segment",
-                 top_k: int = 50):
+
+    def __init__(
+        self,
+        api_url: str = CHATNOIR_API_URL,
+        api_key: str = CHATNOIR_API_KEY,
+        index: str = "msmarco-v2.1-segmented",
+        top_k: int = 50,
+        timeout: float = 30.0,
+    ):
         """
-        Initialize the retriever with OpenSearch credentials and parameters.
-        
+        Initialize the ChatNoir retriever.
+
         Args:
-            endpoint: OpenSearch endpoint URL
-            username: Username for authentication
-            password: Password for authentication
-            index_field: Field to search in (default: "segment")
-            top_k: Number of top documents to retrieve (default: 50)
+            api_url: ChatNoir search endpoint.
+            api_key: ChatNoir API key.
+            index: ChatNoir index short name.
+            top_k: Default number of documents to retrieve.
+            timeout: Request timeout in seconds.
         """
-        self.endpoint = endpoint
-        self.username = username
-        self.password = password
-        self.index_field = index_field
+        if not api_key:
+            raise ValueError(
+                "A ChatNoir API key is required. Set CHATNOIR_API_KEY in your environment."
+            )
+
+        self.api_url = api_url
+        self.api_key = api_key
+        self.index = index
         self.top_k = top_k
-    
-    def retrieve(self, query: str, top_k: int = None) -> List[Dict[str, Any]]:
+        self.timeout = timeout
+
+    def retrieve(
+        self,
+        query: str,
+        top_k: Optional[int] = None,
+        search_method: str = "bm25",
+    ) -> List[Dict[str, Any]]:
         """
-        Retrieve top documents for a given query using BM25 matching.
-        
+        Retrieve top documents for a query using ChatNoir.
+
         Args:
-            query: The search query string
-            top_k: Number of top documents to retrieve (overrides instance default if provided)
-        
+            query: The search query string.
+            top_k: Number of documents to retrieve; overrides the instance default.
+            search_method: ChatNoir retrieval model; use "bm25" for plain BM25.
+
         Returns:
-            List of documents with id, text (segment), and score
+            A list of dictionaries with keys:
+              - id: ChatNoir document UUID
+              - text: document snippet
+              - score: ranking score
+              - source: full ChatNoir result object
         """
         if top_k is None:
             top_k = self.top_k
-        
-        # Construct OpenSearch query
-        search_body = {
-            "query": {
-                "match": {
-                    self.index_field: query
-                }
-            },
-            "size": top_k
+
+        payload = {
+            "query": query,
+            "index": [self.index],
+            "size": top_k,
+            "search_method": search_method,
         }
-        
+
+        headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json",
+        }
+
         try:
-            # Make authenticated request to OpenSearch
-            response = requests.get(
-                self.endpoint,
-                json=search_body,
-                auth=(self.username, self.password),
-                headers={"Content-Type": "application/json"},
-                verify=False  # Note: Set to True in production with proper certificates
+            response = requests.post(
+                self.api_url,
+                json=payload,
+                headers=headers,
+                timeout=self.timeout,
             )
             response.raise_for_status()
-            
-            # Parse results
-            results = response.json()
+
+            data = response.json()
+            results = data.get("results", [])
+
             documents = []
-            
-            if "hits" in results and "hits" in results["hits"]:
-                for hit in results["hits"]["hits"]:
-                    doc = {
-                        "id": hit.get("_id"),
-                        "text": hit.get("_source", {}).get(self.index_field, ""),
-                        "score": hit.get("_score", 0.0),
-                        "source": hit.get("_source", {})  # Full document source
+            for result in results:
+                documents.append(
+                    {
+                        "id": result.get("uuid"),
+                        "text": result.get("snippet", ""),
+                        "score": float(result.get("score", 0.0)),
+                        "source": result,
                     }
-                    documents.append(doc)
-            
+                )
+
             return documents
-        
-        except requests.exceptions.RequestException as e:
-            logger.warning("Error retrieving documents: %s", e)
+
+        except requests.exceptions.RequestException as exc:
+            logger.warning("Error retrieving documents from ChatNoir: %s", exc)
             return []
 
 
 def create_retriever_callable(retriever_instance: Retriever) -> callable:
     """
-    Create a callable that matches the Simulation's expected retriever interface.
-    
+    Create a callable matching the Simulation's expected retriever interface.
+
     Args:
-        retriever_instance: An instance of the Retriever class
-        
+        retriever_instance: An instance of Retriever.
+
     Returns:
-        A callable that takes a query string and returns (doc_ids, scores, corpus_data) where:
-        - doc_ids: List of document IDs
-        - scores: np.ndarray of BM25 scores
-        - corpus_data: Dict mapping doc_id -> text
+        A callable taking (query, top_k) and returning:
+          - doc_ids: list of ChatNoir document UUIDs
+          - scores: NumPy array of ranking scores
+          - corpus_data: mapping from document UUID to snippet text
     """
-    def retriever_func(query: str, top_k: int) -> Tuple[List[str], np.ndarray, Dict[str, str]]:
+    def retriever_func(
+        query: str, top_k: int
+    ) -> Tuple[List[str], np.ndarray, Dict[str, str]]:
         results = retriever_instance.retrieve(query, top_k=top_k)
-        doc_ids = [doc['id'] for doc in results]
-        scores = np.array([doc['score'] for doc in results], dtype=np.float32)
-        corpus_data = {doc['id']: doc['text'] for doc in results}
+
+        doc_ids = [doc["id"] for doc in results]
+        scores = np.array([doc["score"] for doc in results], dtype=np.float32)
+        corpus_data = {doc["id"]: doc["text"] for doc in results}
+
         return doc_ids, scores, corpus_data
-    
+
     return retriever_func
