@@ -132,11 +132,13 @@ class Simulation:
         retriever:    Callable[[str], List[Tuple[str, float]]],
         agents:       List[AgentBase],
         config:       Optional[SimConfig] = None,
+        policy_model: Optional[Any] = None,
     ) -> None:
         self.encoder       = encoder
         self.retriever     = retriever
         self.agents        = agents  # [qr_agent, rr_agent, cp_agent]
         self.cfg           = config or SimConfig()
+        self.policy_model  = policy_model
 
     # ── Metrics (MDP-level evaluation) ────────────────────────────────────────
     @staticmethod
@@ -219,6 +221,8 @@ class Simulation:
     @staticmethod
     def _score_entropy(scores: np.ndarray) -> float:
         """Compute entropy of softmax-normalized scores."""
+        if len(scores) == 0:
+            return 0.0
         probs = softmax(scores.astype(float))
         return float(scipy_entropy(probs))
 
@@ -698,6 +702,7 @@ class Simulation:
                     cur_scores,
                     qrels,
                     last_action_agent,
+                    state,
                 )
     
                 (
@@ -888,7 +893,8 @@ class Simulation:
             doc_ids:    List[str],
             doc_scores: np.ndarray,
             qrels:      Dict[str, int],
-            agents_used: List[bool]
+            agents_used: List[bool],
+            state:      np.ndarray,
         ) -> int:
             if policy == "random":
                 return self._policy_random(valid)
@@ -904,7 +910,15 @@ class Simulation:
                     return ACTION_RR
                 # Second decision: explicitly end the episode.
                 return ACTION_STOP
-            raise ValueError(f"Unknown policy: {policy!r} valid options are: random, expert, stop, prf, rerank")
+            if policy == "reformulate":
+                # First decision: reformulate the query.
+                if not agents_used[0]:
+                    return ACTION_QR
+                # Second decision: explicitly end the episode.
+                return ACTION_STOP
+            if policy == "cql":
+                return self._policy_cql(state, valid)
+            raise ValueError(f"Unknown policy: {policy!r} valid options are: random, expert, stop, prf, rerank, reformulate, cql")
             
 
     def _policy_random(self, valid: List[int]) -> int:
@@ -923,6 +937,29 @@ class Simulation:
             """
             valid_indices = [i for i, v in enumerate(valid) if v == 1]
             return random.choice(valid_indices)
+
+    def _policy_cql(
+        self,
+        state: np.ndarray,
+        valid: List[int],
+    ) -> int:
+        """
+        Use a trained d3rlpy CQL model to select an action.
+
+        Falls back to the first valid action if the model's prediction
+        violates the operational eligibility mask.
+        """
+        if self.policy_model is None:
+            raise RuntimeError("CQL policy requested but no policy_model was provided")
+
+        obs = np.asarray(state, dtype=np.float32).reshape(1, -1)
+        action = int(self.policy_model.predict(obs)[0])
+
+        if not valid[action]:
+            valid_indices = [i for i, v in enumerate(valid) if v == 1]
+            action = valid_indices[0] if valid_indices else ACTION_STOP
+
+        return action
 
     def _policy_expert(
         self,

@@ -30,7 +30,7 @@ class Retriever:
         self,
         api_url: str = CHATNOIR_API_URL,
         api_key: str = CHATNOIR_API_KEY,
-        index: str = "msmarco-v2.1-segmented",
+        index: str = "msmarco-v2.1",
         top_k: int = 50,
         timeout: float = 30.0,
     ):
@@ -107,7 +107,7 @@ class Retriever:
             for result in results:
                 documents.append(
                     {
-                        "id": result.get("uuid"),
+                        "id": result.get("trec_id"),
                         "text": result.get("snippet", ""),
                         "score": float(result.get("score", 0.0)),
                         "source": result,
