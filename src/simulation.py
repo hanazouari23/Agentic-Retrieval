@@ -456,7 +456,9 @@ class Simulation:
         new_doc_scores = effects.get('new_doc_scores', doc_scores)
         elapsed_ms = effects.get('elapsed_time', 0.0) * 1000.0  # Convert to ms
         cost = effects.get('cost')  # Agent-calculated cost
-        
+        if cost is None:
+            cost = ACTION_COSTS.get(action, 0.0)
+
         # Compute metrics on the new results
         metrics = {
             "ndcg":         Simulation.compute_ndcg(new_doc_ids, qrels, self.cfg.ndcg_k),

@@ -24,7 +24,7 @@ from torch.utils.data import DataLoader, TensorDataset
 # -----------------------------
 # Configuration
 # -----------------------------
-TRAJECTORIES_PATH: str = "data/trajectories_expert_5k.csv"
+TRAJECTORIES_PATH: str = "data/training/trajectories_expert_5k.csv"
 
 RANDOM_SEED = 42
 TEST_RATIO = 0.2
@@ -34,8 +34,8 @@ LEARNING_RATE = 1e-3
 WEIGHT_DECAY = 1e-5
 NUM_EPOCHS = 50
 PATIENCE = 7  # early stopping
-MODEL_SAVE_PATH = "bc_policy.pt"
-METRICS_SAVE_PATH = "metrics_bc.json"
+MODEL_SAVE_PATH = "models/standalone_bc_on_full_expert.pt"
+METRICS_SAVE_PATH = "metrics_standalone_bc.json"
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 

@@ -13,8 +13,9 @@ import json
 import logging
 import random
 import sys
+import time
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Set, Tuple
 
 import numpy as np
 import torch
@@ -44,11 +45,11 @@ logger = logging.getLogger(__name__)
 # -----------------------------
 # Configuration
 # -----------------------------
-MODEL_PATH: str = "models/cql_on_full_tree_dataset.pt"
-DATASET_PATH: str = "data/training/mdp_dataset_tree_branches_5000.h5"
+MODEL_PATH: str = "models/cql_on_full_expert_BC_warmstart.pt"
+DATASET_PATH: str = "data/training/mdp_dataset_trajectories_expert_5k.h5"
 QRELS_PATH: str = "data/qrels.ms-marco-dev.tsv"
 QUERIES_PATH: str = "data/topics.ms-marco-dev.tsv"
-OUTPUT_PATH: str = "results/cql_full_tree_traces_50_msmarco_dev.csv"
+OUTPUT_PATH: str = "results/expert/cql_full_expert_traces_50_msmarco_dev.csv"
 
 RANDOM_SEED = 42
 NUM_QUERIES = 50
@@ -65,6 +66,10 @@ SIM_TOP_K_RERANK = 50
 SIM_TOP_K_PRF = 10
 SIM_NDCG_K = 50
 SIM_RECALL_K = 100
+
+RETRIEVER_MAX_RETRIES = 5
+QUERY_DELAY_S = 0.5
+FAILURE_BACKOFF_S = 5.0
 
 
 def set_seed(seed: int) -> None:
@@ -116,23 +121,37 @@ def load_queries(queries_path: str) -> List[Tuple[str, str]]:
     return queries
 
 
+def load_existing_query_ids(output_path: Path) -> Set[str]:
+    """Load query IDs already present in the output file for resumability."""
+    if not output_path.exists():
+        return set()
+    try:
+        with open(output_path, "r", newline="", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            return {row["query_id"].strip() for row in reader if row.get("query_id")}
+    except Exception as e:
+        logger.warning("Could not read existing output file %s: %s", output_path, e)
+        return set()
+
+
 def load_initial_retrieval(
     query: str,
     retriever_func: callable,
     top_k: int = 50,
-    max_retries: int = 3,
+    max_retries: int = RETRIEVER_MAX_RETRIES,
 ) -> Tuple[List[str], np.ndarray, Dict[str, str]]:
-    """Retrieve initial BM25 results for one query with retries."""
-    import time
-
+    """Retrieve initial BM25 results for one query with retries and backoff."""
     last_error: Exception = RuntimeError("Retriever returned no documents")
     for attempt in range(max_retries):
         doc_ids, doc_scores, corpus_data = retriever_func(query, top_k)
         if doc_ids is not None and len(doc_ids) > 0:
             return doc_ids, doc_scores, corpus_data
         if attempt < max_retries - 1:
-            wait = 2 ** attempt
-            logger.warning("Retriever returned no documents for query %r (attempt %d/%d); retrying in %ds", query, attempt + 1, max_retries, wait)
+            wait = min(2 ** attempt, 16)
+            logger.warning(
+                "Retriever returned no documents for query %r (attempt %d/%d); retrying in %ds",
+                query, attempt + 1, max_retries, wait,
+            )
             time.sleep(wait)
     raise last_error
 
@@ -264,6 +283,10 @@ def main():
     output_path = Path(OUTPUT_PATH)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
+    existing_qids = load_existing_query_ids(output_path)
+    if existing_qids:
+        logger.info("Found %d query IDs already in %s; will skip them", len(existing_qids), output_path)
+
     fieldnames = [
         "query_id",
         "query",
@@ -288,20 +311,26 @@ def main():
         "timeout",
     ]
 
-    temporary_path = output_path.with_suffix(".tmp")
     rows_written = 0
     queries_failed = 0
-    queries_succeeded = 0
+    queries_succeeded = len(existing_qids)
     attempted = 0
 
-    with open(temporary_path, "w", newline="", encoding="utf-8") as f:
+    output_exists = output_path.exists() and output_path.stat().st_size > 0
+    with open(output_path, "a", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
+        if not output_exists:
+            writer.writeheader()
 
         for query_id, query in shuffled:
             if queries_succeeded >= NUM_QUERIES:
                 break
             attempted += 1
+
+            if query_id in existing_qids:
+                logger.info("[%d] SKIPPING query_id=%s (already in output)", attempted, query_id)
+                continue
+
             logger.info("[%d] Rolling out query_id=%s | %s", attempted, query_id, query[:80])
             try:
                 doc_ids, doc_scores, corpus_data = load_initial_retrieval(
@@ -322,25 +351,25 @@ def main():
                 for step_idx, transition in enumerate(trajectory):
                     writer.writerow(transition_to_row(query_id, query, step_idx, transition))
                     rows_written += 1
+                f.flush()
 
                 queries_succeeded += 1
                 logger.info("[%d] SAVED %d transitions (success %d/%d)", attempted, len(trajectory), queries_succeeded, NUM_QUERIES)
 
+                if QUERY_DELAY_S > 0:
+                    time.sleep(QUERY_DELAY_S)
+
             except Exception as e:
                 queries_failed += 1
                 logger.exception("[%d] FAILED query_id=%s: %s", attempted, query_id, e)
-
-        f.flush()
-
-    import os
-    os.replace(temporary_path, output_path)
+                time.sleep(FAILURE_BACKOFF_S)
 
     logger.info("=" * 70)
     logger.info("CQL rollout complete")
     logger.info("Output: %s", output_path)
-    logger.info("Total rows written: %d", rows_written)
-    logger.info("Queries succeeded: %d", queries_succeeded)
-    logger.info("Queries failed: %d", queries_failed)
+    logger.info("Total rows written this run: %d", rows_written)
+    logger.info("Queries succeeded total: %d", queries_succeeded)
+    logger.info("Queries failed this run: %d", queries_failed)
     logger.info("=" * 70)
 
 
