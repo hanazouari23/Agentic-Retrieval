@@ -1,0 +1,58 @@
+query_id,query,new_query,action_name,query_length,score_spread,score_entropy,step,rank_overlap,query_drift,ndcg_before,ndcg_after,recall_before,recall_after,cost,latency_ms,cumulative_cost,cumulative_latency_ms,reward,terminal,timeout
+1093322,longest-tenured cast member of saturday night live,longest-tenured cast member of saturday night live,STOP,7.0,3.3865692615509033,0.5495237112045288,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+922335,what was the reason for the snake war,what was the reason for the snake war,STOP,8.0,0.6092318296432495,2.7761242389678955,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+999637,where is volbeat from?,where is volbeat from? mon,PseudoRelevanceFeedback,4.0,1.974697232246399,2.0412325859069824,1,0.9047619104385376,0.03482931852340698,0.4722693621479587,0.4722693621479587,1.0,1.0,0.3,1272.2578048706055,0.3,1272.2578048706055,-0.10240859349568684,0,0
+999637,where is volbeat from?,where is volbeat from? mon,Rerank,5.0,0.0041494835168123245,2.9957237243652344,2,1.0,0.03482931852340698,0.4722693621479587,1.0,1.0,1.0,0.3,221.83799743652344,0.6,1494.095802307129,0.9880666757895316,0,0
+999637,where is volbeat from?,where is volbeat from? mon,STOP,5.0,4.290233135223389,0.06173469498753548,3,1.0,0.03482931852340698,1.0,1.0,1.0,1.0,0.0,0.0,0.6,1494.095802307129,0.0,1,0
+135386,definition of imagination,definition of imagination,STOP,3.0,0.5829336047172546,2.7958998680114746,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+1007550,when can a child sit in the front seat of a car,when can a child sit in the front seat of a car,STOP,12.0,0.4531853199005127,2.9022793769836426,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+1086075,what causes small bumps on your hands,what causes small bumps on your hands,STOP,7.0,0.41943347454071045,2.9021828174591064,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+1032011,who is dean heller?,"(""Dean Heller"")",QueryReform,4.0,2.1492271423339844,1.5338093042373657,1,0.21212121844291687,0.1505088210105896,0.0,1.0,0.0,1.0,1.0,1145.8966732025146,1.0,1145.8966732025146,2.2618034442265826,0,0
+1032011,who is dean heller?,"(""Dean Heller"")",STOP,2.0,1.6274831295013428,2.137850046157837,2,1.0,0.1505088210105896,1.0,1.0,1.0,1.0,0.0,0.0,1.0,1145.8966732025146,0.0,1,0
+384406,how to unlock duty roulette,how to unlock duty roulette,STOP,5.0,1.7256704568862915,1.1496801376342773,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+472024,pass the muster meaning,pass the muster meaning,STOP,4.0,2.320406436920166,1.4178619384765625,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+780613,what is our security system,what is our security system,STOP,5.0,0.05704298987984657,2.994063138961792,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+1099816,homologs definition,homologs definition homolog,PseudoRelevanceFeedback,2.0,0.47973060607910156,2.78387451171875,1,1.0,0.036397457122802734,0.3333333333333333,0.3333333333333333,1.0,1.0,0.3,1230.7991981506348,0.3,1230.7991981506348,-0.10102663993835449,0,0
+1099816,homologs definition,homologs definition homolog,Rerank,3.0,0.003984676208347082,2.9957244396209717,2,1.0,0.036397457122802734,0.3333333333333333,0.6309297535714575,1.0,1.0,0.3,232.5723171234131,0.6,1463.3715152740479,0.527440429905468,0,0
+1099816,homologs definition,homologs definition homolog,STOP,3.0,6.696935653686523,1.2102351188659668,3,1.0,0.036397457122802734,0.6309297535714575,0.6309297535714575,1.0,1.0,0.0,0.0,0.6,1463.3715152740479,0.0,1,0
+1098860,how is page yield calculated for ink cartridge,how is page yield calculated for ink cartridge,STOP,8.0,1.323465347290039,1.7452672719955444,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+818798,what is the difference in a c corp or s corp,what is the difference in a c corp or s corp,STOP,11.0,0.8455908894538879,2.588277578353882,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+1003997,where was the princess bride filmed,where was the princess bride filmed,STOP,6.0,1.296431303024292,2.1026089191436768,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+42568,average salary for public relations manager,average salary for public relations manager,STOP,6.0,0.7305625081062317,2.69657301902771,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+1100167,guayana venezuela,guayana venezuela,STOP,2.0,0.9445791244506836,2.461446523666382,1,1.0,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,1,0
+704072,what is a transit number,what is a transit number,STOP,5.0,0.12452331930398941,2.987980365753174,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+1022178,what prevents wound healing,what prevents wound healing,STOP,4.0,0.23022450506687164,2.9655280113220215,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+499568,smoking teeth oral cancer,smoking teeth oral cancer,STOP,4.0,0.6278274655342102,2.7970714569091797,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+1059601,what is block paintings,what is block paintings,STOP,4.0,0.2573203444480896,2.961146831512451,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+862742,what is whey powder made from,what is whey powder made from,STOP,6.0,0.22142216563224792,2.9663281440734863,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+169778,does oil pulling heal cavities,does oil pulling heal cavities,STOP,5.0,1.4748455286026,1.9214611053466797,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+944700,when do symptoms of seasonal affective disorder start?,when do symptoms of seasonal affective disorder start?,STOP,8.0,1.6111456155776978,1.9698566198349,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+34015,average cost of maid service,average cost of maid service,STOP,5.0,1.1325199604034424,2.253382921218872,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+987230,who sings unforgettable,who sings unforgettable,STOP,3.0,1.0883077383041382,2.4071688652038574,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+359040,how to find regular payback period,how to find regular payback period,STOP,6.0,0.7409500479698181,2.5052270889282227,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+526671,types of business entities,types of business entities,STOP,4.0,0.07542620599269867,2.9927685260772705,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+756949,what is iboss,(iboss),QueryReform,3.0,2.734050750732422,0.4657076299190521,1,0.025641025975346565,0.2789067029953003,0.0,0.5,0.0,1.0,1.0,916.3315296173096,1.0,916.3315296173096,1.269455615679423,0,0
+756949,what is iboss,(iboss),STOP,1.0,2.93332576751709,1.545576810836792,2,1.0,0.2789067029953003,0.5,0.5,1.0,1.0,0.0,0.0,1.0,916.3315296173096,0.0,1,0
+453705,miff meaning,miff meaning,STOP,2.0,2.2808196544647217,0.6721186637878418,1,1.0,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,1,0
+984434,where is highgarden where the tyrells are from,where is highgarden where the tyrells are from,STOP,8.0,4.204921245574951,0.3392220735549927,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+833268,what is the monthly cost of hulu,what is the monthly cost of hulu,STOP,7.0,0.595313310623169,2.779580593109131,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+1080537,wright city mo population,wright city mo population,STOP,4.0,0.9620635509490967,2.2447235584259033,1,1.0,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,1,0
+1087105,what are the crimes classified as economic corruption and financial crimes,what are the crimes classified as economic corruption and financial crimes,STOP,11.0,1.7934515476226807,1.5979597568511963,1,1.0,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,1,0
+1063177,why did spock die in wrath of khan,why did spock die in wrath of khan,STOP,8.0,2.526825428009033,1.699405550956726,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+1090987,roselle nj what county,roselle nj what county,STOP,4.0,1.3647130727767944,2.0669078826904297,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+952388,when is the best time to see northern lights?,when is the best time to see northern lights?,STOP,9.0,0.15619195997714996,2.9813191890716553,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+277799,how many calories in tomatillo sauce,how many calories in tomatillo sauce,STOP,6.0,1.9204922914505005,1.6316763162612915,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+1073721,why ph levels are important in hydroponics,why ph levels are important in hydroponics,STOP,7.0,1.159829020500183,1.9394781589508057,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+1094191,is common law marriage legal in what states,is common law marriage legal in what states,STOP,8.0,0.25631362199783325,2.964531660079956,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+541135,was there a true bagger vance,was there a true bagger vance,STOP,6.0,4.1731181144714355,0.7832828760147095,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+769630,what is meant by a blind copy in an email,what is meant by a blind copy in an email,STOP,10.0,1.0553100109100342,2.056597948074341,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+1095942,how much ibuprofen can you take in a day,how much ibuprofen can you take in a day,STOP,9.0,0.396175354719162,2.8945279121398926,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+523621,tranquilizing definition,tranquilizing definition,Rerank,2.0,1.053275227546692,2.491626262664795,1,1.0,0.0,0.31546487678572877,1.0,1.0,1.0,0.3,193.93062591552734,0.3,193.93062591552734,1.3026058922313581,0,0
+523621,tranquilizing definition,tranquilizing definition,STOP,2.0,7.372371196746826,0.5164408683776855,2,1.0,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.3,193.93062591552734,0.0,1,0
+1067826,what is a router meaning,what is a router meaning,STOP,5.0,0.3694407343864441,2.913863182067871,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+1036800,who is ovid in greek mythology,who is ovid in greek mythology,STOP,6.0,1.0776175260543823,2.306211233139038,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+1091688,phone number for bc transit junction,phone number for bc transit junction,STOP,6.0,0.950157880783081,2.1892483234405518,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+527769,types of flowering cactus,types of flowering cactus,STOP,4.0,0.7574003338813782,2.5884435176849365,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+266760,how long should i boil corn on the cob?,how long should i boil corn on the cob?,STOP,9.0,1.0009125471115112,2.308131694793701,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+1083945,what does distraction mean,what does distraction mean,STOP,4.0,0.349997878074646,2.9294400215148926,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0
+989296,who is sakura haruno,who is sakura haruno,STOP,4.0,1.6134932041168213,1.7157303094863892,1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0

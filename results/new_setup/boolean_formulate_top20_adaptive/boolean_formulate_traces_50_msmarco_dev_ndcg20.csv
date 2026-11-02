@@ -1,0 +1,51 @@
+query_id,original_query,boolean_query,status,result_count,ndcg@20,recall@20
+1093322,longest-tenured cast member of saturday night live,"(""longest-tenured cast member"" OR ""longest running cast member"" OR ""longest serving cast member"" OR ""most seasons cast member"") AND (""Saturday Night Live"" OR SNL)",success,20,0.0,0.0
+922335,what was the reason for the snake war,"(""snake war"" OR ""Snake War"") AND (reason OR cause OR causes OR reasons)",success,5,0.0,0.0
+999637,where is volbeat from?,(Volbeat OR volbeat) AND (from OR origin OR hometown OR country),success,20,0.4082307968370143,1.0
+135386,definition of imagination,(definition OR meaning OR defining) AND (imagination),success,20,0.0,0.0
+1007550,when can a child sit in the front seat of a car,"(child OR minor OR kid OR ""young person"") AND (""sit in front seat"" OR ""ride in front seat"" OR ""occupy front seat"" OR ""be in front seat"") AND (car OR automobile OR vehicle OR ""motor vehicle"")",success,20,0.0,0.0
+1086075,what causes small bumps on your hands,"(""small bumps"" OR ""tiny bumps"" OR ""little bumps"" OR ""small lumps"") AND (hands OR hand OR palms OR fingers) AND (causes OR cause OR reasons OR ""what causes"")",success,2,0.0,0.0
+1032011,who is dean heller?,"(""Dean Heller"")",success,20,1.0,1.0
+384406,how to unlock duty roulette,"(""unlock duty roulette"" OR ""unlock roulette"" OR ""duty roulette unlock"")",success,20,0.0,0.0
+472024,pass the muster meaning,"(""pass the muster"" OR ""pass muster"") AND (meaning OR definition OR sense)",success,20,0.0,0.0
+780613,what is our security system,"(""security system"" OR ""security systems"" OR ""our security system"")",success,20,0.0,0.0
+1099816,homologs definition,"(homologs OR homologues OR ""homologous genes"" OR ""homologous proteins"" OR ""homologous sequences"") AND (definition OR meaning OR def OR defined)",success,10,0.0,0.0
+1098860,how is page yield calculated for ink cartridge,"(""page yield"" OR page-yield OR ""pages per cartridge"") AND (calculated OR calculation OR determined OR computed) AND (""ink cartridge"" OR ""inkjet cartridge"" OR ""printer ink"")",success,20,0.0,0.0
+818798,what is the difference in a c corp or s corp,"(""C corporation"" OR ""C corp"") AND (""S corporation"" OR ""S corp"") AND (difference OR differences OR comparison OR compare)",success,20,0.0,0.0
+1003997,where was the princess bride filmed,"(""princess bride"" OR ""the princess bride"") AND (filmed OR ""filming locations"" OR shot OR ""production location"")",success,20,0.0,0.0
+42568,average salary for public relations manager,"(""average salary"" OR ""mean salary"" OR ""typical salary"" OR ""salary range"") AND (""public relations manager"" OR ""PR manager"" OR ""public relations director"" OR ""communications manager"")",success,10,0.0,0.0
+1100167,guayana venezuela,(guayana OR guyana OR guiana) AND (venezuela),success,20,0.0,0.0
+704072,what is a transit number,"(""transit number"" OR ""bank transit number"" OR ""branch transit number"" OR ""routing transit number"")",success,20,0.0,0.0
+1022178,what prevents wound healing,"(prevents OR inhibits OR impedes OR blocks OR hinders) AND (""wound healing"" OR ""healing of wounds"" OR ""wound repair"" OR ""tissue repair"")",success,10,0.0,0.0
+499568,smoking teeth oral cancer,"(smoking OR ""tobacco use"" OR ""cigarette smoking"") AND (teeth OR dental OR oral) AND (""oral cancer"" OR ""mouth cancer"" OR ""oral cavity cancer"")",success,20,0.0,0.0
+1059601,what is block paintings,"(""block paintings"" OR ""block painting"")",success,20,0.0,0.0
+862742,what is whey powder made from,"(""whey powder"") AND (""made from"" OR ""produced from"" OR ""derived from"" OR ""manufactured from"")",success,20,0.0,0.0
+169778,does oil pulling heal cavities,"(""oil pulling"" OR ""oil swishing"" OR ""oil pulling therapy"") AND (heal OR healing OR cure OR treat OR reverse OR remedy) AND (cavities OR ""dental caries"" OR ""tooth decay"" OR caries)",success,1,0.0,0.0
+944700,when do symptoms of seasonal affective disorder start?,"(""symptoms of seasonal affective disorder"" OR ""seasonal affective disorder symptoms"" OR ""SAD symptoms"") AND (start OR begin OR onset)",success,20,0.0,0.0
+34015,average cost of maid service,"(""average cost"" OR ""typical price"" OR ""standard rate"" OR ""usual fee"") AND (""maid service"" OR ""house cleaning"" OR ""domestic cleaning"" OR ""cleaning service"")",success,20,0.0,0.0
+987230,who sings unforgettable,(sings OR performer OR artist OR vocalist) AND (unforgettable OR song),success,2,0.0,0.0
+359040,how to find regular payback period,"(""regular payback period"" OR ""simple payback period"" OR ""standard payback period"") AND (find OR calculate OR determine OR compute)",success,20,0.0,0.0
+526671,types of business entities,"(""types of business entities"" OR ""business entity types"" OR ""forms of business organization"" OR ""business structure types"")",success,20,0.0,0.0
+756949,what is iboss,(iboss),success,20,0.5,1.0
+453705,miff meaning,(miff OR miffed) AND (meaning OR definition OR sense),success,20,1.0,1.0
+984434,where is highgarden where the tyrells are from,"(highgarden OR ""high garden"") AND (tyrells OR tyrell OR ""house tyrell"")",success,20,0.0,0.0
+833268,what is the monthly cost of hulu,"(""monthly cost"" OR ""monthly price"" OR ""per month"" OR ""subscription fee"") AND (Hulu)",success,20,0.0,0.0
+1080537,wright city mo population,"(""Wright City"" OR ""Wright City Missouri"" OR ""Wright City MO"") AND (population OR populated OR inhabitants OR residents)",success,20,0.38685280723454163,1.0
+1087105,what are the crimes classified as economic corruption and financial crimes,"(""economic corruption"" OR corruption) AND (""financial crimes"" OR ""financial crime"")",success,20,1.0,1.0
+1063177,why did spock die in wrath of khan,"(Spock OR ""Mr. Spock"") AND (die OR death OR died OR killed) AND (""Wrath of Khan"" OR ""Star Trek II"" OR ""Star Trek 2"")",success,20,0.0,0.0
+1090987,roselle nj what county,"(""Roselle NJ"" OR ""Roselle New Jersey"") AND (county)",success,20,0.0,0.0
+952388,when is the best time to see northern lights?,"(""northern lights"" OR ""aurora borealis"")",success,1,0.0,0.0
+277799,how many calories in tomatillo sauce,"(calories OR ""calorie content"" OR ""energy content"" OR kcal) AND (""tomatillo sauce"" OR ""salsa verde"" OR ""green tomatillo salsa"")",success,20,0.0,0.0
+1073721,why ph levels are important in hydroponics,"(""pH levels"" OR ""pH values"" OR ""pH balance"" OR ""acidity levels"") AND (important OR significance OR critical OR essential) AND (hydroponics OR ""hydroponic systems"" OR ""soilless growing"" OR ""hydroponic cultivation"")",success,20,0.0,0.0
+1094191,is common law marriage legal in what states,"(""common law marriage"" OR ""common-law marriage"" OR ""informal marriage"") AND (legal OR legality OR recognized OR valid) AND (states OR ""U.S. states"" OR ""state jurisdictions"")",success,20,0.0,0.0
+541135,was there a true bagger vance,"(""Bagger Vance"" OR ""Legend of Bagger Vance"") AND (true OR real OR actual OR historical OR factual)",success,20,0.0,0.0
+769630,what is meant by a blind copy in an email,"(""blind copy"" OR BCC OR ""blind carbon copy"") AND (email OR e-mail)",success,10,0.0,0.0
+1095942,how much ibuprofen can you take in a day,"(ibuprofen OR Advil OR Motrin) AND (""daily dosage"" OR ""maximum daily dose"" OR ""per day amount"" OR ""daily limit"")",success,20,0.0,0.0
+523621,tranquilizing definition,(tranquilizing OR tranquilising OR tranquilization OR tranquilisation) AND (definition OR meaning OR def),success,2,0.0,0.0
+1067826,what is a router meaning,"(router OR ""network router"" OR ""internet router"") AND (meaning OR definition OR ""what is"")",success,20,0.0,0.0
+1036800,who is ovid in greek mythology,"(ovid) AND (""greek mythology"")",success,20,0.0,0.0
+1091688,phone number for bc transit junction,"(""phone number"" OR ""contact number"" OR ""telephone number"") AND (""BC Transit"" OR ""British Columbia Transit"") AND (junction)",success,20,0.0,0.0
+527769,types of flowering cactus,"(""types of flowering cactus"" OR ""flowering cactus types"" OR ""flowering cactus varieties"" OR ""kinds of flowering cactus"")",success,20,0.0,0.0
+266760,how long should i boil corn on the cob?,"(""boil corn on the cob"" OR ""boiling corn on the cob"" OR ""cook corn on the cob"" OR ""cooking corn on the cob"") AND (time OR duration OR ""how long"" OR minutes)",success,20,0.0,0.0
+1083945,what does distraction mean,"(distraction OR ""distraction meaning"" OR ""what distraction means"")",success,20,0.0,0.0
+989296,who is sakura haruno,"(""Sakura Haruno"" OR Sakura)",success,5,0.0,0.0

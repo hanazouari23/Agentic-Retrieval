@@ -1,0 +1,20 @@
+{
+  "model": "moonshotai/Kimi-K2.6",
+  "endpoint": "https://hub.nhr.fau.de/api/llmgw/v1",
+  "prompt_module": "src/agents/boolean_formulate.py",
+  "chatnoir_endpoint": "https://www.chatnoir.eu/api/v1/_search",
+  "index": "msmarco-v2.1",
+  "top_k": 20,
+  "adaptive_top_k": false,
+  "search_method": "bm25",
+  "ndcg_k": 20,
+  "recall_k": 20,
+  "max_steps": 3,
+  "qr_formulation": "boolean",
+  "query_source": "results\\cql_full_tree_traces_50_msmarco_dev.csv",
+  "topics_file": "data\\topics.ms-marco-dev.tsv",
+  "qrels_file": "data\\qrels.ms-marco-dev.tsv",
+  "num_queries_requested": 50,
+  "num_queries_selected": 50,
+  "timestamp": "2026-10-25T09:16:57+00:00"
+}
