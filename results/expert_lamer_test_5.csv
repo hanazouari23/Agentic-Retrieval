@@ -1,0 +1,1 @@
+query_id,query,new_query,action_name,query_length,score_spread,score_entropy,step,rank_overlap,query_drift,ndcg_before,ndcg_after,recall_before,recall_after,cost,latency_ms,cumulative_cost,cumulative_latency_ms,reward,terminal,timeout

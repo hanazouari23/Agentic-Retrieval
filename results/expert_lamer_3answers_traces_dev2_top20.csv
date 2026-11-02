@@ -1,0 +1,2 @@
+query_id,query,new_query,action_name,query_length,score_spread,score_entropy,step,rank_overlap,query_drift,ndcg_before,ndcg_after,recall_before,recall_after,cost,latency_ms,cumulative_cost,cumulative_latency_ms,reward,terminal,timeout
+262330,how long is a flight from chicago to australia,how long is a flight from chicago to australia,STOP,9.0,0.0,0.0,1,1.0,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,1,0

@@ -1,0 +1,21 @@
+{
+  "queries_path": "data\\topics.ms-marco-dev2.tsv",
+  "qrels_path": "data\\qrels.ms-marco-dev2.tsv",
+  "output_path": "results\\expert_lamer_3answers_traces_dev2_top20.csv",
+  "cache_dir": "cache/expert_lamer_3answers_oracle",
+  "cache_version": "v1-tr20-tp10-ndcg20-recall20-lamer-idxmsmarco-v2.1-smbm25-min1",
+  "num_queries": 500,
+  "offset": 0,
+  "random_seed": 42,
+  "sim_max_steps": 3,
+  "sim_top_k_rerank": 20,
+  "sim_top_k_prf": 10,
+  "sim_ndcg_k": 20,
+  "sim_recall_k": 20,
+  "qr_formulation": "lamer",
+  "lamer_n_candidates": 3,
+  "lamer_top_k_initial": 10,
+  "adaptive_top_k": true,
+  "min_top_k": 1,
+  "search_method": "bm25"
+}
