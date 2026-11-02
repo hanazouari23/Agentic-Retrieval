@@ -11,6 +11,7 @@ Produces, for each baseline policy, a CSV in results/:
 """
 from __future__ import annotations
 
+import argparse
 import csv
 import logging
 import random
@@ -55,6 +56,7 @@ SIM_NDCG_K = 50
 SIM_RECALL_K = 100
 
 POLICIES = ["stop", "rerank", "reformulate", "expert"]
+DEFAULT_QR_FORMULATION = "natural"
 
 
 def set_seed(seed: int) -> None:
@@ -212,7 +214,7 @@ def generate_policy_traces(
     logger.info("=" * 70)
 
 
-def main():
+def main(args: argparse.Namespace) -> None:
     set_seed(RANDOM_SEED)
 
     # Load the exact query IDs used by the CQL traces.
@@ -256,7 +258,10 @@ def main():
     retriever_instance = Retriever()
     retriever = create_retriever_callable(retriever_instance)
 
-    qr_agent = ReformulationAgent(embed_model=encoder)
+    qr_agent = ReformulationAgent(
+        embed_model=encoder,
+        formulation_mode=args.qr_formulation,
+    )
     rr_agent = RerankingAgent(embed_model=encoder)
     prf_agent = PRFAgent(embed_model=encoder, num_expansion_terms=5)
 
@@ -294,4 +299,16 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(
+        description="Generate baseline policy traces for MAESTRO",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument(
+        "--qr-formulation",
+        type=str,
+        default=DEFAULT_QR_FORMULATION,
+        choices=["natural", "boolean"],
+        help="Query-reformulation mode for the reformulate baseline",
+    )
+    args = parser.parse_args()
+    main(args)

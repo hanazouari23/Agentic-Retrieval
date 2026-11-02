@@ -113,8 +113,12 @@ class PRFAgent(AgentBase):
         if not expanded_results or len(expanded_results[0]) == 0:
             new_doc_ids = initial_doc_ids
             new_doc_scores = np.asarray(initial_scores, dtype=np.float32)
+            new_corpus_data = segments_dict
         else:
             expanded_doc_ids = expanded_results[0]
+            expanded_corpus = (
+                expanded_results[2] if len(expanded_results) > 2 else {}
+            )
 
             # Fuse the original and PRF-expanded top-K rankings.
             new_doc_ids, new_doc_scores = self._reciprocal_rank_fusion(
@@ -122,13 +126,17 @@ class PRFAgent(AgentBase):
                 top_k=top_k,
                 rrf_k=60,
             )
-        
+            # Provide text for the fused ranking.  Prefer expanded corpus,
+            # fall back to initial segments for documents not re-retrieved.
+            new_corpus_data = {**segments_dict, **expanded_corpus}
+
         elapsed_time = time.time() - start_time
-        
+
         return {
             'new_query_text': new_query_text,
             'new_doc_ids': new_doc_ids,
             'new_doc_scores': new_doc_scores.astype(np.float32) if isinstance(new_doc_scores, np.ndarray) else np.array(new_doc_scores, dtype=np.float32),
+            'new_corpus_data': new_corpus_data,
             'elapsed_time': elapsed_time,
             'cost': 0.3
         }

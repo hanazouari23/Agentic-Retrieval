@@ -398,7 +398,7 @@ class Simulation:
         doc_scores: np.ndarray,
         qrels:      Dict[str, int],
         corpus_data: Optional[Dict[str, str]] = None,
-    ) -> Tuple[str, List[str], np.ndarray, Dict[str, float], float, float]:
+    ) -> Tuple[str, List[str], np.ndarray, Dict[str, float], float, float, Dict[str, str]]:
         """
         Apply the chosen agent action; return updated retrieval state + metrics.
 
@@ -409,6 +409,7 @@ class Simulation:
         doc_ids    : current ranked document IDs
         doc_scores : retrieval scores aligned with doc_ids
         qrels      : {doc_id: relevance_grade}
+        corpus_data: doc_id -> text mapping from the current ranking
 
         Returns
         -------
@@ -417,8 +418,11 @@ class Simulation:
         new_doc_scores : updated scores
         metrics        : {"ndcg": float, "recall": float}
         elapsed_ms     : wall-clock time taken by this agent call (ms)
+        cost           : agent-reported action cost
+        new_corpus_data: doc_id -> text mapping for the new ranking
         """
         t0 = time.perf_counter()
+        corpus_data = corpus_data or {}
 
         if action == ACTION_STOP:
             metrics = {
@@ -426,14 +430,14 @@ class Simulation:
                 "recall":       Simulation.compute_recall(doc_ids, qrels, self.cfg.recall_k),
             }
             elapsed_ms = (time.perf_counter() - t0) * 1_000.0
-            return query, list(doc_ids), doc_scores.copy(), metrics, elapsed_ms, 0.0
+            return query, list(doc_ids), doc_scores.copy(), metrics, elapsed_ms, 0.0, corpus_data
 
         # Get the appropriate agent
         if action not in [ACTION_QR, ACTION_RR, ACTION_PRF]:
             raise ValueError(f"Unknown action id: {action}")
-        
+
         agent = self.agents[action]  # ACTION_QR=0, ACTION_RR=1, ACTION_PRF=2
-    
+
         # Prepare query features for the agent
         query_features = {
             'query_text': query,
@@ -446,10 +450,10 @@ class Simulation:
             'top_k_rerank': self.cfg.top_k_rerank,   # RerankingAgent expects 'top_k_rerank'
             'top_k_prf': self.cfg.top_k_prf,         # PRFAgent expects 'top_k_prf'
         }
-        
+
         # Call agent
         effects = agent.compute_effects(query_features)
-        
+
         # Extract results
         new_query = effects.get('new_query_text', query)
         new_doc_ids = effects.get('new_doc_ids', doc_ids)
@@ -459,13 +463,16 @@ class Simulation:
         if cost is None:
             cost = ACTION_COSTS.get(action, 0.0)
 
+        # Propagate document text for the new ranking when the agent provides it.
+        new_corpus_data = effects.get('new_corpus_data') or corpus_data
+
         # Compute metrics on the new results
         metrics = {
             "ndcg":         Simulation.compute_ndcg(new_doc_ids, qrels, self.cfg.ndcg_k),
             "recall":       Simulation.compute_recall(new_doc_ids, qrels, self.cfg.recall_k),
         }
-        
-        return new_query, new_doc_ids, new_doc_scores, metrics, elapsed_ms, cost
+
+        return new_query, new_doc_ids, new_doc_scores, metrics, elapsed_ms, cost, new_corpus_data
 
     # ── 3. Reward ─────────────────────────────────────────────────────────────
     def _compute_reward(
@@ -637,6 +644,7 @@ class Simulation:
                     metrics,
                     elapsed_ms,
                     action_cost,
+                    new_corpus_data,
                 ) = self.compute_effects(
                     action,
                     cur_query,
@@ -658,8 +666,9 @@ class Simulation:
                         metrics,
                         elapsed_ms,
                         action_cost,
+                        new_corpus_data,
                     ) = cached_effects.pop(0)
-    
+
                 else:
                     remaining_steps = cfg.max_steps - step
                     max_plan_steps = min(2, remaining_steps)
@@ -693,8 +702,9 @@ class Simulation:
                         metrics,
                         elapsed_ms,
                         action_cost,
+                        new_corpus_data,
                     ) = cached_effects.pop(0)
-    
+
             else:
                 action = self._select_action(
                     policy,
@@ -714,6 +724,7 @@ class Simulation:
                     metrics,
                     elapsed_ms,
                     action_cost,
+                    new_corpus_data,
                 ) = self.compute_effects(
                     action,
                     cur_query,
@@ -722,7 +733,7 @@ class Simulation:
                     qrels,
                     corpus_data=cur_corpus,
                 )
-    
+
             done = (
                 action == ACTION_STOP
                 or step == cfg.max_steps - 1
@@ -829,11 +840,12 @@ class Simulation:
             cur_query = new_query
             cur_ids = list(new_ids)
             cur_scores = np.asarray(new_scores, dtype=np.float32)
+            cur_corpus = new_corpus_data
             cur_query_length = new_query_length
             cur_query_emb = new_query_emb
             previous_docids = next_previous_docids
             last_action_agent = next_last_action_agent
-    
+
             if done:
                 break
             
@@ -1002,11 +1014,13 @@ class Simulation:
                 continue  # Skip invalid actions
 
             try:
-                new_query, new_ids, new_scores, metrics, elapsed_ms, cost = \
+                new_query, new_ids, new_scores, metrics, elapsed_ms, cost, new_corpus = \
                     self.compute_effects(action, query, doc_ids, doc_scores, qrels)
                 ndcg_new = metrics["ndcg"]
                 action_deltas[action] = ndcg_new - ndcg_current
-                effects[action] = (new_query, new_ids, new_scores, metrics, elapsed_ms, cost)
+                effects[action] = (
+                    new_query, new_ids, new_scores, metrics, elapsed_ms, cost, new_corpus,
+                )
             except Exception as e:
                 # If an agent fails, penalize that action heavily
                 logger.warning(f"Expert policy: action {ACTION_NAMES[action]} failed: {e}")
@@ -1025,6 +1039,7 @@ class Simulation:
                 },
                 0.0,
                 0.0,
+                {},
             )
 
         # Pick action with best ΔNDCG; if tied, prefer STOP
@@ -1069,6 +1084,8 @@ class Simulation:
             cfg.recall_k,
         )
 
+        corpus_data = corpus_data or {}
+
         stop_effect = (
             query,
             list(doc_ids),
@@ -1079,6 +1096,7 @@ class Simulation:
             },
             0.0,
             0.0,
+            corpus_data,
         )
 
         best_plan = [ACTION_STOP]
@@ -1090,7 +1108,7 @@ class Simulation:
                 continue
 
             try:
-                query1, ids1, scores1, met1, time1, cost1 = (
+                query1, ids1, scores1, met1, time1, cost1, corpus1 = (
                     self.compute_effects(
                         action1,
                         query,
@@ -1115,6 +1133,7 @@ class Simulation:
                 met1,
                 time1,
                 cost1,
+                corpus1,
             )
             step1_value = met1["ndcg"]
 
@@ -1145,14 +1164,14 @@ class Simulation:
                     continue
 
                 try:
-                    query2, ids2, scores2, met2, time2, cost2 = (
+                    query2, ids2, scores2, met2, time2, cost2, corpus2 = (
                         self.compute_effects(
                             action2,
                             query1,
                             ids1,
                             scores1,
                             qrels,
-                            corpus_data=corpus_data,
+                            corpus_data=corpus1,
                         )
                     )
                 except Exception as exc:
@@ -1171,6 +1190,7 @@ class Simulation:
                     met2,
                     time2,
                     cost2,
+                    corpus2,
                 )
                 step2_value = met2["ndcg"]
 

@@ -200,8 +200,9 @@ def make_run_name(args: argparse.Namespace) -> str:
     Separate checkpoints when important generation settings differ.
 
     Do not resume the same directory after changing policy, max steps,
-    or reranking/PRF parameters.
+    reranking/PRF parameters, or query reformulation mode.
     """
+    qr_mode = getattr(args, "qr_formulation", "natural")
     return (
         f"policy-{args.policy}"
         f"_n-{args.num_trajectories}"
@@ -210,6 +211,7 @@ def make_run_name(args: argparse.Namespace) -> str:
         f"_prf-{args.top_k_prf}"
         f"_ndcg-{args.ndcg_k}"
         f"_recall-{args.recall_k}"
+        f"_qr-{qr_mode}"
     )
 
 
@@ -974,7 +976,10 @@ def main(args: argparse.Namespace) -> None:
     retriever_instance = Retriever()
     retriever = create_retriever_callable(retriever_instance)
 
-    qr_agent = ReformulationAgent(embed_model=encoder)
+    qr_agent = ReformulationAgent(
+        embed_model=encoder,
+        formulation_mode=args.qr_formulation,
+    )
     rr_agent = RerankingAgent(embed_model=encoder)
     prf_agent = PRFAgent(embed_model=encoder, num_expansion_terms=5)
 
@@ -1130,6 +1135,13 @@ if __name__ == "__main__":
         default="random",
         choices=["random", "expert", "stop", "prf", "rerank", "tree"],
         help="Action selection policy",
+    )
+    parser.add_argument(
+        "--qr-formulation",
+        type=str,
+        default="natural",
+        choices=["natural", "boolean"],
+        help="Query-reformulation mode: natural-language rewrite or Boolean concept formulation",
     )
 
     parser.add_argument(

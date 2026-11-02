@@ -50,7 +50,8 @@ logs/
 tmp/
 temp/
 d3rlpy_logs/
-
+cache/
+results/new_setup/original_retrieval_cache/
 # --- Jupyter / notebooks (optional) ---
 # Uncomment if you don't want to track notebooks
 # *.ipynb_checkpoints/
