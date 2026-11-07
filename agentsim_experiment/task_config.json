@@ -1,0 +1,88 @@
+{
+  "revision": "0651b3f6a43fe88d90cc9552e188ade409b83f18",
+  "max_rounds": 2,
+  "ending_rule": "horizon-first",
+  "query_hash_dim": 512,
+  "tools": [
+    "chatnoir_retriever",
+    "filter",
+    "answer_drafter",
+    "finalizer"
+  ],
+  "query_features": "sklearn HashingVectorizer: word unigrams+bigrams, l2, alternate_sign=False",
+  "numeric_features": [
+    "log1p(evidence_count)/log(101)",
+    "has_evidence",
+    "rounds_used/max_rounds",
+    "rounds_remaining/max_rounds",
+    "log1p(history_count:chatnoir_retriever)/log(11)",
+    "log1p(history_count:filter)/log(11)",
+    "log1p(history_count:answer_drafter)/log(11)",
+    "log1p(history_count:finalizer)/log(11)",
+    "last_tool:none",
+    "last_tool:chatnoir_retriever",
+    "last_tool:filter",
+    "last_tool:answer_drafter",
+    "last_tool:finalizer"
+  ],
+  "reward": "sum of observed component rewards; discount once per pipeline decision",
+  "split_grouping": {
+    "groups": 998,
+    "validation_groups": 200,
+    "rule": "Union of shared provenance identifiers and normalized exact query matches",
+    "exact_query_overlap": 0,
+    "warning": "Semantic paraphrase overlap is not detected; validation may be empty if all groups are connected or needed for action coverage"
+  },
+  "seed": 42,
+  "assumptions": [
+    "Maximum 2 pipeline decisions per candidate query/history segment.",
+    "Segment boundaries inferred from query, provenance, and history resets.",
+    "An initially empty evidence store and complete execution of inferred action blocks are assumed.",
+    "No-marker segments are treated as one inferred initial pipeline selection, including possible fixed workflows.",
+    "At the round limit assign timeout, even if finalizer is last; earlier finalizer endings are terminal.",
+    "Unresolved early endings, component failures, and horizon/history inconsistencies are excluded."
+  ],
+  "actions": {
+    "0": [
+      "answer_drafter"
+    ],
+    "1": [
+      "answer_drafter",
+      "finalizer"
+    ],
+    "2": [
+      "chatnoir_retriever"
+    ],
+    "3": [
+      "chatnoir_retriever",
+      "answer_drafter",
+      "finalizer"
+    ],
+    "4": [
+      "chatnoir_retriever",
+      "filter",
+      "answer_drafter",
+      "finalizer"
+    ],
+    "5": [
+      "filter"
+    ],
+    "6": [
+      "filter",
+      "answer_drafter"
+    ],
+    "7": [
+      "filter",
+      "answer_drafter",
+      "finalizer"
+    ],
+    "8": [
+      "filter",
+      "chatnoir_retriever",
+      "answer_drafter",
+      "finalizer"
+    ]
+  },
+  "feature_dim": 525,
+  "d3rlpy_version": "2.8.1"
+}

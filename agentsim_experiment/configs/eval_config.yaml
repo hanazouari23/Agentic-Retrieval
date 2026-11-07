@@ -1,0 +1,57 @@
+# Configuration for the MS MARCO online pipeline evaluation.
+
+# Paths are relative to the agentsim_experiment directory.
+paths:
+  task_config: "configs/task_config.json"
+  queries: "data/queries.tsv"
+  qrels: "data/qrels.tsv"
+  cql_model: "policy/msmarco_discrete_cql.d3"
+
+# Output files
+outputs:
+  cql_run: "runs/cql.run"
+  cql_diagnostics: "runs/cql_diagnostics.jsonl"
+  behavior_run: "runs/behavior.run"
+  behavior_diagnostics: "runs/behavior_diagnostics.jsonl"
+  summary_csv: "results/summary.csv"
+
+# Evaluation scope
+evaluation:
+  # Number of held-out queries to evaluate. Set to null to use all queries
+  # that have qrels and are not in the training set.
+  num_queries: null
+  seed: 42
+  # Max rank to write per query in the MS MARCO run file.
+  max_rank: 1000
+
+# Agent parameters
+agents:
+  chatnoir_retriever:
+    top_k: 20
+    index: "msmarco-v2.1"
+    search_method: "bm25"
+    adaptive_top_k: true
+    min_top_k: 1
+  filter:
+    min_length: 30
+    max_length: 10000
+    min_score: 0.0
+  answer_drafter:
+    # Number of answer candidates to draft per query.
+    n_candidates: 3
+    # LLM parameters are read from environment variables by default.
+  finalizer:
+    # Number of top passages to return as the final ranking.
+    top_k: 20
+
+# Behavior policy source for the baseline run.
+# If a path to an episode_manifest is provided, the historical action for each
+# query is used; otherwise the full pipeline (action 4) is used as a fallback.
+behavior:
+  episode_manifest: "episode_manifest.jsonl"
+  fallback_action: 4
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
