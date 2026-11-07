@@ -1,13 +1,15 @@
 r"""Generate trajectories using a trained CQL policy on MS MARCO dev queries.
 
 Usage:
-    poetry run python generate_cql_traces.py
+    .venv\Scripts\python generate_cql_traces.py
+    .venv\Scripts\python generate_cql_traces.py --model-path models/other.pt --hidden-dims 128 64 --num-queries 10
 
 Produces:
-    results/cql_full_tree_traces_50_msmarco_dev.csv
+    results/expert/cql_full_tree_traces_10_msmarco_dev_64_32_best.csv
 """
 from __future__ import annotations
 
+import argparse
 import csv
 import json
 import logging
@@ -45,15 +47,15 @@ logger = logging.getLogger(__name__)
 # -----------------------------
 # Configuration
 # -----------------------------
-MODEL_PATH: str = "models/cql_on_full_expert_BC_warmstart.pt"
-DATASET_PATH: str = "data/training/mdp_dataset_trajectories_expert_5k.h5"
+MODEL_PATH: str = "models/cql_terminal_reward_alpha05_val_64_32_best.pt"
+# DATASET_PATH: str = "data/training/mdp_dataset_tree_branches_5000.h5"
 QRELS_PATH: str = "data/qrels.ms-marco-dev.tsv"
 QUERIES_PATH: str = "data/topics.ms-marco-dev.tsv"
-OUTPUT_PATH: str = "results/expert/cql_full_expert_traces_50_msmarco_dev.csv"
+OUTPUT_PATH: str = "results/cql_terminal_reward_alpha05_val_64_32.csv"
 
 RANDOM_SEED = 42
-NUM_QUERIES = 50
-HIDDEN_DIMS = (256, 128)
+NUM_QUERIES = 20
+HIDDEN_DIMS = (64, 32)
 BATCH_SIZE = 256
 GAMMA = 0.99
 LEARNING_RATE = 3e-4
@@ -156,13 +158,13 @@ def load_initial_retrieval(
     raise last_error
 
 
-def load_cql_model(model_path: str, device: str):
+def load_cql_model(model_path: str, device: str, hidden_dims: Tuple[int, ...] = HIDDEN_DIMS):
     """Rebuild a DiscreteCQL algo and load trained weights."""
     config = DiscreteCQLConfig(
         batch_size=BATCH_SIZE,
         gamma=GAMMA,
         learning_rate=LEARNING_RATE,
-        encoder_factory=VectorEncoderFactory(hidden_units=list(HIDDEN_DIMS)),
+        encoder_factory=VectorEncoderFactory(hidden_units=list(hidden_dims)),
         n_critics=N_CRITICS,
         target_update_interval=TARGET_UPDATE_INTERVAL,
         alpha=CQL_ALPHA,
@@ -225,11 +227,26 @@ def transition_to_row(
 
 
 def main():
-    set_seed(RANDOM_SEED)
+    parser = argparse.ArgumentParser(
+        description="Generate CQL rollout traces on MS MARCO dev queries."
+    )
+    parser.add_argument("--model-path", type=str, default=MODEL_PATH,
+                        help="Path to the trained CQL model checkpoint.")
+    parser.add_argument("--hidden-dims", type=int, nargs="+", default=list(HIDDEN_DIMS),
+                        help="Hidden layer sizes for the CQL encoder (must match the checkpoint).")
+    parser.add_argument("--num-queries", type=int, default=NUM_QUERIES,
+                        help="Number of queries to evaluate.")
+    parser.add_argument("--output-path", type=str, default=OUTPUT_PATH,
+                        help="Output CSV path.")
+    parser.add_argument("--random-seed", type=int, default=RANDOM_SEED,
+                        help="Random seed for query shuffling.")
+    args = parser.parse_args()
+
+    set_seed(args.random_seed)
 
     device = "cuda:0" if torch.cuda.is_available() else "cpu"
-    logger.info("Loading CQL model from %s on %s", MODEL_PATH, device)
-    policy_model = load_cql_model(MODEL_PATH, device)
+    logger.info("Loading CQL model from %s on %s", args.model_path, device)
+    policy_model = load_cql_model(args.model_path, device, tuple(args.hidden_dims))
 
     logger.info("Loading qrels from %s", QRELS_PATH)
     qrels = load_qrels(QRELS_PATH)
@@ -244,16 +261,16 @@ def main():
     ]
     logger.info("Found %d judged queries", len(judged_queries))
 
-    rng = random.Random(RANDOM_SEED)
+    rng = random.Random(args.random_seed)
     shuffled = list(judged_queries)
     rng.shuffle(shuffled)
-    logger.info("Shuffled %d judged queries; will stop after %d successful rollouts", len(shuffled), NUM_QUERIES)
+    logger.info("Shuffled %d judged queries; will stop after %d successful rollouts", len(shuffled), args.num_queries)
 
     logger.info("Loading query encoder: all-MiniLM-L6-v2")
     encoder = SentenceTransformer("all-MiniLM-L6-v2")
 
-    logger.info("Initializing ChatNoir BM25 retriever")
-    retriever_instance = Retriever()
+    logger.info("Initializing ChatNoir BM25 retriever (msmarco-v2.1-segmented)")
+    retriever_instance = Retriever(index="msmarco-v2.1-segmented")
     retriever = create_retriever_callable(retriever_instance)
 
     qr_agent = ReformulationAgent(embed_model=encoder)
@@ -266,7 +283,7 @@ def main():
         top_k_prf=SIM_TOP_K_PRF,
         ndcg_k=SIM_NDCG_K,
         recall_k=SIM_RECALL_K,
-        reward_alpha=2.0,
+        reward_alpha=1.5,
         reward_beta=0.5,
         reward_gamma=0.2,
         reward_delta=0.1,
@@ -280,7 +297,7 @@ def main():
         policy_model=policy_model,
     )
 
-    output_path = Path(OUTPUT_PATH)
+    output_path = Path(args.output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     existing_qids = load_existing_query_ids(output_path)
@@ -323,7 +340,7 @@ def main():
             writer.writeheader()
 
         for query_id, query in shuffled:
-            if queries_succeeded >= NUM_QUERIES:
+            if queries_succeeded >= args.num_queries:
                 break
             attempted += 1
 
@@ -354,7 +371,7 @@ def main():
                 f.flush()
 
                 queries_succeeded += 1
-                logger.info("[%d] SAVED %d transitions (success %d/%d)", attempted, len(trajectory), queries_succeeded, NUM_QUERIES)
+                logger.info("[%d] SAVED %d transitions (success %d/%d)", attempted, len(trajectory), queries_succeeded, args.num_queries)
 
                 if QUERY_DELAY_S > 0:
                     time.sleep(QUERY_DELAY_S)

@@ -1,0 +1,65 @@
+{
+  "config": {
+    "dataset_path": "data/training/mdp_dataset_tree_branches_5000_terminal_reward_alpha10.h5",
+    "query_csv_path": "data/training/trajectories_tree_branches_5000_terminal_reward.csv",
+    "random_seed": 42,
+    "hidden_dims": [
+      64,
+      32
+    ],
+    "batch_size": 256,
+    "gamma": 0.99,
+    "learning_rate": 0.0003,
+    "n_critics": 2,
+    "target_update_interval": 8000,
+    "cql_alpha": 1.0,
+    "n_steps": 50000,
+    "n_steps_per_epoch": 10000,
+    "val_split": 0.1,
+    "early_stopping_patience": 2
+  },
+  "data_stats": {
+    "total_episodes": 19999,
+    "train_episodes": 18000,
+    "val_episodes": 1999,
+    "train_queries": 4500,
+    "val_queries": 500,
+    "num_actions": 4
+  },
+  "epoch_metrics": [
+    {
+      "epoch": 1,
+      "metrics": {
+        "time_sample_batch": 0.004153651475906372,
+        "time_algorithm_update": 0.014163544726371765,
+        "loss": 1.2405760705113411,
+        "td_loss": 0.07718620946034789,
+        "conservative_loss": 1.1633898607492448,
+        "time_step": 0.018458002209663392
+      }
+    },
+    {
+      "epoch": 2,
+      "metrics": {
+        "time_sample_batch": 0.004207865881919861,
+        "time_algorithm_update": 0.014162562274932861,
+        "loss": 1.1443332158982753,
+        "td_loss": 0.07650768654718995,
+        "conservative_loss": 1.06782552896142,
+        "time_step": 0.01851568629741669
+      }
+    },
+    {
+      "epoch": 3,
+      "metrics": {
+        "time_sample_batch": 0.004202337288856506,
+        "time_algorithm_update": 0.014182829356193543,
+        "loss": 1.0299190518915653,
+        "td_loss": 0.06877397282086313,
+        "conservative_loss": 0.9611450790822506,
+        "time_step": 0.018529421424865723
+      }
+    }
+  ],
+  "best_val_td_error": 0.19075967320275458
+}
