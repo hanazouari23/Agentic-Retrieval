@@ -19,16 +19,16 @@ def _is_transient(exc: requests.RequestException) -> bool:
     return True
 
 
-def _adaptive_sizes(top_k: int, min_top_k: int) -> List[int]:
-    """Return a descending list of retrieval depths to try on 500 errors."""
-    sizes: List[int] = []
-    size = top_k
-    while size >= min_top_k:
-        sizes.append(size)
-        size = size // 2
-    if min_top_k not in sizes:
-        sizes.append(min_top_k)
-    return sizes
+# def _adaptive_sizes(top_k: int, min_top_k: int) -> List[int]:
+#     """Return a descending list of retrieval depths to try on 500 errors."""
+#     sizes: List[int] = []
+#     size = top_k
+#     while size >= min_top_k:
+#         sizes.append(size)
+#         size = size // 2
+#     if min_top_k not in sizes:
+#         sizes.append(min_top_k)
+#     return sizes
 
 
 load_dotenv()
@@ -109,9 +109,11 @@ class Retriever:
         if top_k is None:
             top_k = self.top_k
 
-        candidate_sizes = (
-            _adaptive_sizes(top_k, min_top_k) if adaptive_top_k else [top_k]
-        )
+        # Adaptive sizing disabled for consistent retrieval depth across queries.
+        # candidate_sizes = (
+        #     _adaptive_sizes(top_k, min_top_k) if adaptive_top_k else [top_k]
+        # )
+        # candidate_sizes = [top_k]
 
         headers = {
             "Authorization": f"Bearer {self.api_key}",
@@ -120,67 +122,70 @@ class Retriever:
 
         last_error: Optional[Exception] = None
 
-        for size in candidate_sizes:
-            payload = {
-                "query": query,
-                "index": [self.index],
-                "size": size,
-                "search_method": search_method,
-            }
+        # Adaptive sizing disabled: use the requested top_k only.
+        # for size in candidate_sizes:
+        size = top_k
+        payload = {
+            "query": query,
+            "index": [self.index],
+            "size": size,
+            "search_method": search_method,
+        }
 
-            for attempt in range(max_attempts):
-                try:
-                    response = requests.post(
-                        self.api_url,
-                        json=payload,
-                        headers=headers,
-                        timeout=self.timeout,
+        for attempt in range(max_attempts):
+            try:
+                response = requests.post(
+                    self.api_url,
+                    json=payload,
+                    headers=headers,
+                    timeout=self.timeout,
+                )
+                response.raise_for_status()
+
+                data = response.json()
+                results = data.get("results", []) if isinstance(data, dict) else []
+
+                documents = []
+                for result in results:
+                    documents.append(
+                        {
+                            "id": result.get("trec_id"),
+                            "text": result.get("snippet", ""),
+                            "score": float(result.get("score", 0.0)),
+                            "source": result,
+                        }
                     )
-                    response.raise_for_status()
 
-                    data = response.json()
-                    results = data.get("results", []) if isinstance(data, dict) else []
+                # Adaptive fallback logging disabled.
+                # if size != top_k:
+                #     logger.info(
+                #         "Adaptive fallback succeeded for query %r at size=%d (requested %d)",
+                #         query[:80],
+                #         size,
+                #         top_k,
+                #     )
+                return documents
 
-                    documents = []
-                    for result in results:
-                        documents.append(
-                            {
-                                "id": result.get("trec_id"),
-                                "text": result.get("snippet", ""),
-                                "score": float(result.get("score", 0.0)),
-                                "source": result,
-                            }
-                        )
-
-                    if size != top_k:
-                        logger.info(
-                            "Adaptive fallback succeeded for query %r at size=%d (requested %d)",
-                            query[:80],
-                            size,
-                            top_k,
-                        )
-                    return documents
-
-                except requests.exceptions.RequestException as exc:
-                    last_error = exc
-                    if _is_transient(exc) and attempt < max_attempts - 1:
-                        wait = 2 ** attempt
-                        logger.warning(
-                            "Transient retrieval failure (attempt %d/%d, size=%d) for query %r; retrying in %ds: %s",
-                            attempt + 1,
-                            max_attempts,
-                            size,
-                            query[:80],
-                            wait,
-                            exc,
-                        )
-                        time.sleep(wait)
-                        continue
-                    # Give up on this size and move to the next smaller one.
-                    break
-                except json.JSONDecodeError as exc:
-                    last_error = exc
-                    break
+            except requests.exceptions.RequestException as exc:
+                last_error = exc
+                if _is_transient(exc) and attempt < max_attempts - 1:
+                    wait = 2 ** attempt
+                    logger.warning(
+                        "Transient retrieval failure (attempt %d/%d, size=%d) for query %r; retrying in %ds: %s",
+                        attempt + 1,
+                        max_attempts,
+                        size,
+                        query[:80],
+                        wait,
+                        exc,
+                    )
+                    time.sleep(wait)
+                    continue
+                # Give up on this attempt.
+                break
+            except json.JSONDecodeError as exc:
+                last_error = exc
+                break
 
         logger.warning(
             "All retrieval attempts failed for query %r: %s",

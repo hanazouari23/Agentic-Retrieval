@@ -1,0 +1,87 @@
+\begin{table}[htbp]
+    \centering
+    \caption{Comparison of Retrieval Policies: Effectiveness, Cost, and Latency}
+    \label{tab:rq2_policy_comparison}
+
+    \small
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.2}
+
+    \begin{tabularx}{\linewidth}{
+        >{\raggedright\arraybackslash}p{0.28\linewidth}
+        *{4}{>{\centering\arraybackslash}X}
+    }
+        \toprule
+        Policy
+        & Mean final NDCG@50
+        & Mean final Recall@50
+        & Mean cumulative abstract cost
+        & Mean cumulative latency (ms) \\
+        \midrule
+        Always STOP
+        & 0.107 & 0.160 & 0.000 & 0.1 \\
+
+        Rerank $\rightarrow$ STOP
+        & 0.111 & 0.160 & 0.300 & 116.9 \\
+
+        PRF $\rightarrow$ STOP
+        & --- & --- & --- & --- \\
+
+        Reformulate $\rightarrow$ STOP
+        & 0.036 & 0.060 & 1.000 & 1896.2 \\
+
+        Random
+        & 0.094 & 0.147 & 0.497 & 2065.0 \\
+
+        Greedy oracle / two-step expert
+        & 0.147 & 0.180 & 0.096 & 192.6 \\
+
+        Learned CQL policy
+        & 0.078 & 0.140 & 0.404 & 822.7 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Query-Level Impact of Retrieval Policies}
+    \label{tab:rq2_query_level_impact}
+
+    \small
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.2}
+
+    \begin{tabularx}{\linewidth}{
+        >{\raggedright\arraybackslash}p{0.35\linewidth}
+        *{4}{>{\centering\arraybackslash}X}
+    }
+        \toprule
+        Policy
+        & Queries improved (\%)
+        & Unchanged (\%)
+        & Worsened (\%)
+        & Mean $\Delta$NDCG \\
+        \midrule
+        Always STOP
+        & 0.00 & 100.00 & 0.00 & 0.000 \\
+
+        Rerank $\rightarrow$ STOP
+        & 8.00 & 88.00 & 4.00 & 0.004 \\
+
+        PRF $\rightarrow$ STOP
+        & --- & --- & --- & --- \\
+
+        Reformulate $\rightarrow$ STOP
+        & 4.00 & 84.00 & 12.00 & -0.071 \\
+
+        Random
+        & 2.94 & 91.18 & 5.88 & -0.004 \\
+
+        Greedy oracle / two-step expert
+        & 10.00 & 90.00 & 0.00 & 0.040 \\
+
+        Learned CQL policy
+        & 0.00 & 92.00 & 8.00 & -0.029 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}

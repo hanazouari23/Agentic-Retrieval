@@ -17,7 +17,7 @@ SYSTEM_PROMPT = (
 load_dotenv()
 API_KEY = os.getenv("LLMAPI_KEY")
 BASE_URL = os.getenv("BASE_URL_HPC")  # or BASE_URL_UNI depending on the environment
-MODEL_NAME = os.getenv("MODEL_NAME_HPC")  # or MODEL_NAME_UNI depending on the environment
+MODEL_NAME = os.getenv("MODEL_NAME_HPC_2")  # or MODEL_NAME_UNI depending on the environment
 if not MODEL_NAME:
     raise RuntimeError("Missing environment variable: MODEL_NAME_HPC")
 

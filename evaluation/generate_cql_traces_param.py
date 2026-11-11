@@ -1,16 +1,16 @@
-r"""Generate trajectories using the stop-penalty CQL policy.
+r"""Generate CQL rollout traces with full parameterization.
 
-Rolls out the model saved by `train_cql_stop_penalty.py` on the exact
-set of query IDs present in `results/cql_full_tree_traces_50_msmarco_dev.csv`.
-
-Usage:
-    .venv\Scripts\python generate_cql_stop_penalty_traces.py
-
-Produces:
-    results/cql_full_tree_stop_penalty_traces_50_msmarco_dev.csv
+Usage example:
+    python -m evaluation.generate_cql_traces_param \
+        --model-path models/cql_on_full_tree_dataset_val_64_32_best.pt \
+        --hidden-dims 64 32 \
+        --reward-alpha 2.0 \
+        --output-path results/cql_on_full_tree_dataset_val_64_32_best_50_msmarco_dev.csv \
+        --num-queries 50
 """
 from __future__ import annotations
 
+import argparse
 import csv
 import json
 import logging
@@ -21,13 +21,13 @@ from pathlib import Path
 from typing import Any, Dict, List, Set, Tuple
 
 import numpy as np
+import pandas as pd
 import torch
 from d3rlpy.algos import DiscreteCQLConfig
 from d3rlpy.dataset import MDPDataset
 from d3rlpy.models.encoders import VectorEncoderFactory
 from sentence_transformers import SentenceTransformer
 
-# Add project paths for absolute imports.
 root_path = Path(__file__).resolve().parent
 src_path = root_path / "src"
 sys.path.insert(0, str(root_path))
@@ -45,33 +45,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# -----------------------------
-# Configuration
-# -----------------------------
-MODEL_PATH: str = "models/cql_on_full_tree_stop_penalty_50q_dev.pt"
-REFERENCE_TRACES_PATH: str = "results/cql_full_tree_traces_50_msmarco_dev.csv"
-QRELS_PATH: str = "data/qrels.ms-marco-dev.tsv"
-QUERIES_PATH: str = "data/topics.ms-marco-dev.tsv"
-OUTPUT_PATH: str = "results/cql_full_tree_stop_penalty_traces_50_msmarco_dev.csv"
-
-RANDOM_SEED = 42
-HIDDEN_DIMS = (256, 128)
-BATCH_SIZE = 256
-GAMMA = 0.99
-LEARNING_RATE = 3e-4
-N_CRITICS = 2
-TARGET_UPDATE_INTERVAL = 8000
-CQL_ALPHA = 1.0
-
-SIM_MAX_STEPS = 3
-SIM_TOP_K_RERANK = 50
-SIM_TOP_K_PRF = 10
-SIM_NDCG_K = 50
-SIM_RECALL_K = 100
-
-RETRIEVER_MAX_RETRIES = 5
-QUERY_DELAY_S = 0.5
-FAILURE_BACKOFF_S = 5.0
+REFERENCE_QUERY_IDS_PATH: str = "RQs/relevant_csvs/cql_full_tree_traces_50_msmarco_dev.csv"
 
 
 def set_seed(seed: int) -> None:
@@ -83,12 +57,10 @@ def set_seed(seed: int) -> None:
 
 
 def load_qrels(qrels_path: str) -> Dict[str, Dict[str, int]]:
-    """Load qrels in TSV format: query_id iteration doc_id relevance_grade."""
     from collections import defaultdict
-
     qrels: Dict[str, Dict[str, int]] = defaultdict(dict)
     with open(qrels_path, "r", encoding="utf-8") as f:
-        next(f, None)  # skip header
+        next(f, None)
         for line in f:
             parts = line.strip().split("\t")
             if len(parts) < 4:
@@ -104,10 +76,9 @@ def load_qrels(qrels_path: str) -> Dict[str, Dict[str, int]]:
 
 
 def load_queries(queries_path: str) -> List[Tuple[str, str]]:
-    """Load queries as a list of (query_id, query_text)."""
     queries: List[Tuple[str, str]] = []
     with open(queries_path, "r", encoding="utf-8") as f:
-        next(f, None)  # skip header
+        next(f, None)
         for line in f:
             line = line.strip()
             if not line:
@@ -124,21 +95,14 @@ def load_queries(queries_path: str) -> List[Tuple[str, str]]:
 
 
 def load_reference_query_ids(reference_path: str) -> List[str]:
-    """Return the unique query IDs from the reference trace file, in order."""
-    seen: Set[str] = set()
-    ordered: List[str] = []
-    with open(reference_path, "r", newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            qid = row["query_id"].strip()
-            if qid and qid not in seen:
-                seen.add(qid)
-                ordered.append(qid)
-    return ordered
+    """Load the ordered list of query IDs to evaluate from a reference CSV."""
+    df = pd.read_csv(reference_path)
+    ids = [str(qid).strip() for qid in df["query_id"].unique().tolist()]
+    logger.info("Loaded %d reference query IDs from %s", len(ids), reference_path)
+    return ids
 
 
 def load_existing_query_ids(output_path: Path) -> Set[str]:
-    """Load query IDs already present in the output file for resumability."""
     if not output_path.exists():
         return set()
     try:
@@ -154,9 +118,8 @@ def load_initial_retrieval(
     query: str,
     retriever_func: callable,
     top_k: int = 50,
-    max_retries: int = RETRIEVER_MAX_RETRIES,
+    max_retries: int = 5,
 ) -> Tuple[List[str], np.ndarray, Dict[str, str]]:
-    """Retrieve initial BM25 results for one query with retries and backoff."""
     last_error: Exception = RuntimeError("Retriever returned no documents")
     for attempt in range(max_retries):
         doc_ids, doc_scores, corpus_data = retriever_func(query, top_k)
@@ -172,22 +135,19 @@ def load_initial_retrieval(
     raise last_error
 
 
-def load_cql_model(model_path: str, device: str):
-    """Rebuild a DiscreteCQL algo and load trained weights."""
+def load_cql_model(model_path: str, device: str, hidden_dims: Tuple[int, ...]):
     config = DiscreteCQLConfig(
-        batch_size=BATCH_SIZE,
-        gamma=GAMMA,
-        learning_rate=LEARNING_RATE,
-        encoder_factory=VectorEncoderFactory(hidden_units=list(HIDDEN_DIMS)),
-        n_critics=N_CRITICS,
-        target_update_interval=TARGET_UPDATE_INTERVAL,
-        alpha=CQL_ALPHA,
+        batch_size=256,
+        gamma=0.99,
+        learning_rate=3e-4,
+        encoder_factory=VectorEncoderFactory(hidden_units=list(hidden_dims)),
+        n_critics=2,
+        target_update_interval=8000,
+        alpha=1.0,
     )
     algo = config.create(device=device)
-
-    # Build the network with a dummy dataset that has the correct shapes.
     dummy_obs = np.zeros((10, 399), dtype=np.float32)
-    dummy_actions = np.arange(10, dtype=np.int64) % 4  # ensure all 4 actions appear
+    dummy_actions = np.arange(10, dtype=np.int64) % 4
     dummy_rewards = np.zeros((10,), dtype=np.float32)
     dummy_terminals = np.zeros((10,), dtype=np.float32)
     dummy_terminals[-1] = 1.0
@@ -210,11 +170,9 @@ def transition_to_row(
     step_idx: int,
     transition: Any,
 ) -> Dict[str, Any]:
-    """Flatten one Transition into a CSV row."""
     state = transition.state
     info = transition.info
     action = int(transition.action)
-
     return {
         "query_id": query_id,
         "query": query,
@@ -236,33 +194,48 @@ def transition_to_row(
         "cumulative_latency_ms": float(info.get("cum_elapsed_ms", 0.0)),
         "reward": float(transition.reward),
         "terminal": int(action == ACTION_STOP),
-        "timeout": int(step_idx == SIM_MAX_STEPS - 1 and action != ACTION_STOP),
+        "timeout": int(step_idx == 2 and action != ACTION_STOP),
     }
 
 
 def main():
-    set_seed(RANDOM_SEED)
+    parser = argparse.ArgumentParser(description="Generate CQL rollout traces with full parameterization.")
+    parser.add_argument("--model-path", type=str, required=True)
+    parser.add_argument("--hidden-dims", type=int, nargs="+", required=True)
+    parser.add_argument("--output-path", type=str, required=True)
+    parser.add_argument("--num-queries", type=int, default=50)
+    parser.add_argument("--random-seed", type=int, default=42)
+    parser.add_argument("--reward-alpha", type=float, default=2.0)
+    parser.add_argument("--reward-beta", type=float, default=0.5)
+    parser.add_argument("--reward-gamma", type=float, default=0.2)
+    parser.add_argument("--reward-delta", type=float, default=0.1)
+    parser.add_argument("--queries-path", type=str, default="data/topics.ms-marco-dev.tsv")
+    parser.add_argument("--qrels-path", type=str, default="data/qrels.ms-marco-dev.tsv")
+    parser.add_argument("--query-ids-from", type=str, default=REFERENCE_QUERY_IDS_PATH,
+                        help="Reference CSV whose query_id column defines the exact queries to evaluate.")
+    args = parser.parse_args()
 
+    set_seed(args.random_seed)
     device = "cuda:0" if torch.cuda.is_available() else "cpu"
-    logger.info("Loading CQL model from %s on %s", MODEL_PATH, device)
-    policy_model = load_cql_model(MODEL_PATH, device)
+    logger.info("Loading CQL model from %s on %s", args.model_path, device)
+    policy_model = load_cql_model(args.model_path, device, tuple(args.hidden_dims))
 
-    logger.info("Loading qrels from %s", QRELS_PATH)
-    qrels = load_qrels(QRELS_PATH)
+    qrels = load_qrels(args.qrels_path)
+    queries = load_queries(args.queries_path)
+    judged_queries = [(qid, qtext) for qid, qtext in queries if qid in qrels and qrels[qid]]
 
-    logger.info("Loading queries from %s", QUERIES_PATH)
-    queries = load_queries(QUERIES_PATH)
-    query_map = {qid: qtext for qid, qtext in queries}
+    if args.query_ids_from:
+        reference_ids = load_reference_query_ids(args.query_ids_from)
+        judged_map = {qid: qtext for qid, qtext in judged_queries}
+        shuffled = [(qid, judged_map[qid]) for qid in reference_ids if qid in judged_map]
+        logger.info("Using %d reference query IDs from %s", len(shuffled), args.query_ids_from)
+    else:
+        rng = random.Random(args.random_seed)
+        shuffled = list(judged_queries)
+        rng.shuffle(shuffled)
 
-    logger.info("Loading reference query IDs from %s", REFERENCE_TRACES_PATH)
-    reference_qids = load_reference_query_ids(REFERENCE_TRACES_PATH)
-    logger.info("Found %d reference query IDs", len(reference_qids))
-
-    logger.info("Loading query encoder: all-MiniLM-L6-v2")
     encoder = SentenceTransformer("all-MiniLM-L6-v2")
-
-    logger.info("Initializing ChatNoir BM25 retriever")
-    retriever_instance = Retriever()
+    retriever_instance = Retriever(index="msmarco-v2.1-segmented")
     retriever = create_retriever_callable(retriever_instance)
 
     qr_agent = ReformulationAgent(embed_model=encoder)
@@ -270,15 +243,15 @@ def main():
     prf_agent = PRFAgent(embed_model=encoder, num_expansion_terms=5)
 
     config = SimConfig(
-        max_steps=SIM_MAX_STEPS,
-        top_k_rerank=SIM_TOP_K_RERANK,
-        top_k_prf=SIM_TOP_K_PRF,
-        ndcg_k=SIM_NDCG_K,
-        recall_k=SIM_RECALL_K,
-        reward_alpha=2.0,
-        reward_beta=0.5,
-        reward_gamma=0.2,
-        reward_delta=0.1,
+        max_steps=3,
+        top_k_rerank=50,
+        top_k_prf=10,
+        ndcg_k=50,
+        recall_k=100,
+        reward_alpha=args.reward_alpha,
+        reward_beta=args.reward_beta,
+        reward_gamma=args.reward_gamma,
+        reward_delta=args.reward_delta,
     )
 
     sim = Simulation(
@@ -289,71 +262,40 @@ def main():
         policy_model=policy_model,
     )
 
-    output_path = Path(OUTPUT_PATH)
+    output_path = Path(args.output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-
     existing_qids = load_existing_query_ids(output_path)
-    if existing_qids:
-        logger.info("Found %d query IDs already in %s; will skip them", len(existing_qids), output_path)
 
     fieldnames = [
-        "query_id",
-        "query",
-        "new_query",
-        "action_name",
-        "query_length",
-        "score_spread",
-        "score_entropy",
-        "step",
-        "rank_overlap",
-        "query_drift",
-        "ndcg_before",
-        "ndcg_after",
-        "recall_before",
-        "recall_after",
-        "cost",
-        "latency_ms",
-        "cumulative_cost",
-        "cumulative_latency_ms",
-        "reward",
-        "terminal",
-        "timeout",
+        "query_id", "query", "new_query", "action_name", "query_length",
+        "score_spread", "score_entropy", "step", "rank_overlap", "query_drift",
+        "ndcg_before", "ndcg_after", "recall_before", "recall_after", "cost",
+        "latency_ms", "cumulative_cost", "cumulative_latency_ms", "reward",
+        "terminal", "timeout",
     ]
 
     rows_written = 0
     queries_failed = 0
     queries_succeeded = len(existing_qids)
-    attempted = 0
-
     output_exists = output_path.exists() and output_path.stat().st_size > 0
+
     with open(output_path, "a", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         if not output_exists:
             writer.writeheader()
 
-        for query_id in reference_qids:
+        for query_id, query in shuffled:
+            if queries_succeeded >= args.num_queries:
+                break
             if query_id in existing_qids:
-                logger.info("[%d] SKIPPING query_id=%s (already in output)", attempted + 1, query_id)
                 queries_succeeded += 1
-                attempted += 1
                 continue
 
-            query = query_map.get(query_id)
-            if query is None:
-                logger.warning("[%d] query_id=%s not found in query file; skipping", attempted + 1, query_id)
-                queries_failed += 1
-                attempted += 1
-                continue
-
-            attempted += 1
-            logger.info("[%d/%d] Rolling out query_id=%s | %s", attempted, len(reference_qids), query_id, query[:80])
+            logger.info("Rolling out query_id=%s | %s", query_id, query[:80])
             try:
                 doc_ids, doc_scores, corpus_data = load_initial_retrieval(
-                    query=query,
-                    retriever_func=retriever,
-                    top_k=config.top_k_rerank,
+                    query=query, retriever_func=retriever, top_k=config.top_k_rerank,
                 )
-
                 trajectory = sim.generate_trajectory(
                     query=query,
                     doc_ids=doc_ids,
@@ -362,22 +304,17 @@ def main():
                     policy="cql",
                     corpus_data=corpus_data,
                 )
-
                 for step_idx, transition in enumerate(trajectory):
                     writer.writerow(transition_to_row(query_id, query, step_idx, transition))
                     rows_written += 1
                 f.flush()
-
                 queries_succeeded += 1
-                logger.info("[%d/%d] SAVED %d transitions", attempted, len(reference_qids), len(trajectory))
-
-                if QUERY_DELAY_S > 0:
-                    time.sleep(QUERY_DELAY_S)
-
+                logger.info("SAVED %d transitions", len(trajectory))
+                time.sleep(0.5)
             except Exception as e:
                 queries_failed += 1
-                logger.exception("[%d/%d] FAILED query_id=%s: %s", attempted, len(reference_qids), query_id, e)
-                time.sleep(FAILURE_BACKOFF_S)
+                logger.exception("FAILED query_id=%s: %s", query_id, e)
+                time.sleep(5.0)
 
     logger.info("=" * 70)
     logger.info("CQL rollout complete")
@@ -385,7 +322,6 @@ def main():
     logger.info("Total rows written this run: %d", rows_written)
     logger.info("Queries succeeded total: %d", queries_succeeded)
     logger.info("Queries failed this run: %d", queries_failed)
-    logger.info("=" * 70)
 
 
 if __name__ == "__main__":

@@ -20,6 +20,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Set, Tuple
 
 import numpy as np
+import pandas as pd
 import torch
 from d3rlpy.algos import DiscreteCQLConfig
 from d3rlpy.dataset import MDPDataset
@@ -47,15 +48,16 @@ logger = logging.getLogger(__name__)
 # -----------------------------
 # Configuration
 # -----------------------------
-MODEL_PATH: str = "models/cql_terminal_reward_alpha05_val_64_32_best.pt"
+MODEL_PATH: str = "models/cql_on_full_tree_terminal_reward_dataset.pt"
 # DATASET_PATH: str = "data/training/mdp_dataset_tree_branches_5000.h5"
 QRELS_PATH: str = "data/qrels.ms-marco-dev.tsv"
 QUERIES_PATH: str = "data/topics.ms-marco-dev.tsv"
-OUTPUT_PATH: str = "results/cql_terminal_reward_alpha05_val_64_32.csv"
+OUTPUT_PATH: str = "results/cql_full_tree_50_msmarco_traces_terminal_reward.csv"
+REFERENCE_QUERY_IDS_PATH: str = "RQs/relevant_csvs/cql_full_tree_traces_50_msmarco_dev.csv"
 
 RANDOM_SEED = 42
-NUM_QUERIES = 20
-HIDDEN_DIMS = (64, 32)
+NUM_QUERIES = 50
+HIDDEN_DIMS = (256, 128)
 BATCH_SIZE = 256
 GAMMA = 0.99
 LEARNING_RATE = 3e-4
@@ -121,6 +123,14 @@ def load_queries(queries_path: str) -> List[Tuple[str, str]]:
                 query_text = parts[0].strip()
             queries.append((query_id, query_text))
     return queries
+
+
+def load_reference_query_ids(reference_path: str) -> List[str]:
+    """Load the ordered list of query IDs to evaluate from a reference CSV."""
+    df = pd.read_csv(reference_path)
+    ids = [str(qid).strip() for qid in df["query_id"].unique().tolist()]
+    logger.info("Loaded %d reference query IDs from %s", len(ids), reference_path)
+    return ids
 
 
 def load_existing_query_ids(output_path: Path) -> Set[str]:
@@ -239,7 +249,9 @@ def main():
     parser.add_argument("--output-path", type=str, default=OUTPUT_PATH,
                         help="Output CSV path.")
     parser.add_argument("--random-seed", type=int, default=RANDOM_SEED,
-                        help="Random seed for query shuffling.")
+                        help="Random seed for query shuffling (ignored when --query-ids-from is used).")
+    parser.add_argument("--query-ids-from", type=str, default=REFERENCE_QUERY_IDS_PATH,
+                        help="Reference CSV whose query_id column defines the exact queries to evaluate.")
     args = parser.parse_args()
 
     set_seed(args.random_seed)
@@ -261,16 +273,25 @@ def main():
     ]
     logger.info("Found %d judged queries", len(judged_queries))
 
-    rng = random.Random(args.random_seed)
-    shuffled = list(judged_queries)
-    rng.shuffle(shuffled)
-    logger.info("Shuffled %d judged queries; will stop after %d successful rollouts", len(shuffled), args.num_queries)
+    if args.query_ids_from:
+        reference_ids = load_reference_query_ids(args.query_ids_from)
+        judged_map = {qid: qtext for qid, qtext in judged_queries}
+        shuffled = [(qid, judged_map[qid]) for qid in reference_ids if qid in judged_map]
+        logger.info(
+            "Using %d reference query IDs from %s; will stop after %d successful rollouts",
+            len(shuffled), args.query_ids_from, args.num_queries,
+        )
+    else:
+        rng = random.Random(args.random_seed)
+        shuffled = list(judged_queries)
+        rng.shuffle(shuffled)
+        logger.info("Shuffled %d judged queries; will stop after %d successful rollouts", len(shuffled), args.num_queries)
 
     logger.info("Loading query encoder: all-MiniLM-L6-v2")
     encoder = SentenceTransformer("all-MiniLM-L6-v2")
 
-    logger.info("Initializing ChatNoir BM25 retriever (msmarco-v2.1-segmented)")
-    retriever_instance = Retriever(index="msmarco-v2.1-segmented")
+    logger.info("Initializing ChatNoir BM25 retriever (msmarco-v2.1)")
+    retriever_instance = Retriever(index="msmarco-v2.1")
     retriever = create_retriever_callable(retriever_instance)
 
     qr_agent = ReformulationAgent(embed_model=encoder)

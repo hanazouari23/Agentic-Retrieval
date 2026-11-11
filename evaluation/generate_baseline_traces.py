@@ -44,8 +44,8 @@ logger = logging.getLogger(__name__)
 # -----------------------------
 # Configuration
 # -----------------------------
-CQL_TRACES_PATH: str = "results/cql_full_tree_traces_50_msmarco_dev.csv"
-OUTPUT_DIR: str = "results"
+CQL_TRACES_PATH: str = "RQs/relevant_csvs/cql_full_tree_traces_50_msmarco_dev.csv"
+OUTPUT_DIR: str = "RQs/relevant_csvs"
 
 RANDOM_SEED = 42
 
@@ -55,7 +55,7 @@ SIM_TOP_K_PRF = 10
 SIM_NDCG_K = 50
 SIM_RECALL_K = 100
 
-POLICIES = ["stop", "rerank", "reformulate", "expert"]
+POLICIES = ["stop", "rerank", "reformulate", "expert", "random"]
 DEFAULT_QR_FORMULATION = "natural"
 
 
@@ -254,8 +254,8 @@ def main(args: argparse.Namespace) -> None:
     logger.info("Loading query encoder: all-MiniLM-L6-v2")
     encoder = SentenceTransformer("all-MiniLM-L6-v2")
 
-    logger.info("Initializing ChatNoir BM25 retriever")
-    retriever_instance = Retriever()
+    logger.info("Initializing ChatNoir BM25 retriever (msmarco-v2.1)")
+    retriever_instance = Retriever(index="msmarco-v2.1")
     retriever = create_retriever_callable(retriever_instance)
 
     qr_agent = ReformulationAgent(
@@ -286,7 +286,7 @@ def main(args: argparse.Namespace) -> None:
     )
 
     output_dir = Path(OUTPUT_DIR)
-    for policy in POLICIES:
+    for policy in args.policies:
         output_path = output_dir / f"{policy}_traces_50_msmarco_dev.csv"
         generate_policy_traces(
             policy=policy,
@@ -309,6 +309,14 @@ if __name__ == "__main__":
         default=DEFAULT_QR_FORMULATION,
         choices=["natural", "boolean"],
         help="Query-reformulation mode for the reformulate baseline",
+    )
+    parser.add_argument(
+        "--policies",
+        type=str,
+        nargs="+",
+        default=POLICIES,
+        choices=POLICIES,
+        help="Baseline policies to run",
     )
     args = parser.parse_args()
     main(args)

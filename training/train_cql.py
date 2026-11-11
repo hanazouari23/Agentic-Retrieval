@@ -21,10 +21,10 @@ from d3rlpy.models.encoders import VectorEncoderFactory
 # -----------------------------
 # Configuration
 # -----------------------------
-DATASET_PATH: str = "data/training/mdp_dataset_tree_branches_5000.h5"
+DATASET_PATH: str = "data/training/mdp_dataset_tree_branches_5000_terminal_reward.h5"
 MODEL_SAVE_DIR = Path("models")
-MODEL_SAVE_PATH = str(MODEL_SAVE_DIR / "cql_on_full_tree_dataset.pt")
-METRICS_SAVE_PATH = "train_cql_metrics.json"
+MODEL_SAVE_PATH = str(MODEL_SAVE_DIR / "cql_on_full_tree_terminal_reward_dataset.pt")
+METRICS_SAVE_PATH = "train_cql_metrics_terminal_reward.json"
 
 RANDOM_SEED = 42
 HIDDEN_DIMS = (256, 128)
