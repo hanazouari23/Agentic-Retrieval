@@ -1,0 +1,20 @@
+{
+  "seed": 42,
+  "device": "cuda:0",
+  "batch_size": 256,
+  "updates": 50000,
+  "lr": 0.0003,
+  "output_dir": "models\\iql_stop_penalty_coeff01_5000_seed42",
+  "dataset_path": "data/training/mdp_dataset_tree_branches_5000_stop_penalty_coeff01.h5",
+  "dataset_csv_path": null,
+  "obs_dim": 399,
+  "n_actions": 4,
+  "hidden_dims": [
+    256,
+    256
+  ],
+  "gamma": 0.99,
+  "expectile": 0.7,
+  "temperature": 3.0,
+  "target_tau": 0.005
+}

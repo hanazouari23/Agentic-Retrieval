@@ -1,0 +1,84 @@
+{
+  "config": {
+    "seed": 42,
+    "device": "cuda:0",
+    "batch_size": 256,
+    "updates": 10,
+    "lr": 0.0003,
+    "output_dir": "models\\iql_dataset_config_test",
+    "dataset_path": "data/training/mdp_dataset_tree_branches_5000.h5",
+    "dataset_csv_path": "data/training/trajectories_tree_branches_5000_terminal_reward.csv",
+    "obs_dim": 399,
+    "n_actions": 4,
+    "hidden_dims": [
+      256,
+      256
+    ],
+    "gamma": 0.99,
+    "expectile": 0.7,
+    "temperature": 3.0,
+    "target_tau": 0.005
+  },
+  "metrics": [
+    {
+      "update": 1,
+      "loss_actor": 1.0346941947937012,
+      "loss_qvalue": 0.19926974177360535,
+      "loss_value": 0.004528935998678207
+    },
+    {
+      "update": 2,
+      "loss_actor": 1.1690967082977295,
+      "loss_qvalue": 0.12110111117362976,
+      "loss_value": 0.0011401926167309284
+    },
+    {
+      "update": 3,
+      "loss_actor": 1.2826204299926758,
+      "loss_qvalue": 0.13195616006851196,
+      "loss_value": 0.0006412562215700746
+    },
+    {
+      "update": 4,
+      "loss_actor": 1.375794529914856,
+      "loss_qvalue": 0.15687446296215057,
+      "loss_value": 0.0012447875924408436
+    },
+    {
+      "update": 5,
+      "loss_actor": 1.3447349071502686,
+      "loss_qvalue": 0.08656386286020279,
+      "loss_value": 0.0014056054642423987
+    },
+    {
+      "update": 6,
+      "loss_actor": 1.341689109802246,
+      "loss_qvalue": 0.1097741425037384,
+      "loss_value": 0.0010886674281209707
+    },
+    {
+      "update": 7,
+      "loss_actor": 1.2832179069519043,
+      "loss_qvalue": 0.13232973217964172,
+      "loss_value": 0.0006077748839743435
+    },
+    {
+      "update": 8,
+      "loss_actor": 1.205930471420288,
+      "loss_qvalue": 0.15310046076774597,
+      "loss_value": 0.00032242969609797
+    },
+    {
+      "update": 9,
+      "loss_actor": 1.1487891674041748,
+      "loss_qvalue": 0.14524835348129272,
+      "loss_value": 0.00031163034145720303
+    },
+    {
+      "update": 10,
+      "loss_actor": 1.0692944526672363,
+      "loss_qvalue": 0.0965060144662857,
+      "loss_value": 0.0005545287858694792
+    }
+  ]
+}

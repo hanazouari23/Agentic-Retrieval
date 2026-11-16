@@ -1,0 +1,80 @@
+\begin{table}[htbp]
+    \centering
+    \caption{Impact of Reward Variants on Retrieval Performance and Stopping Behavior}
+    \label{tab:rq3_reward_variants}
+
+    \small
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.2}
+
+    \begin{tabularx}{\linewidth}{
+        >{\raggedright\arraybackslash}p{0.22\linewidth}
+        *{8}{>{\centering\arraybackslash}X}
+    }
+        \toprule
+        Reward variant
+        & Mean NDCG
+        & Mean Recall
+        & Mean cost
+        & Mean latency (ms)
+        & Immediate STOP (\%)
+        & Later explicit STOP (\%)
+        & Horizon reached (\%)
+        & Mean enhancement count \\
+        \midrule
+        Base
+        & 0.078 & 0.140 & 0.404 & 822.7 & 22.00 & 78.00 & 0.00 & 0.88 \\
+
+        Stop penalty
+        & 0.100 & 0.160 & 0.346 & 691.3 & 38.00 & 54.00 & 8.00 & 0.78 \\
+
+        Reduced terminal reward
+        & 0.067 & 0.120 & 0.522 & 2592.1 & 24.00 & 70.00 & 6.00 & 1.04 \\
+
+        Terminal reward
+        & 0.067 & 0.120 & 0.574 & 2507.0 & 28.00 & 62.00 & 10.00 & 0.98 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Cost and Latency Coefficient Sweeps}
+    \label{tab:rq3_cost_latency_sweeps}
+
+    \small
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.2}
+
+    \begin{tabularx}{\linewidth}{
+        >{\raggedright\arraybackslash}p{0.22\linewidth}
+        *{8}{>{\centering\arraybackslash}X}
+    }
+        \toprule
+        Configuration
+        & Mean NDCG
+        & Mean Recall
+        & Mean cost
+        & Mean latency (ms)
+        & Immediate STOP (\%)
+        & Later explicit STOP (\%)
+        & Horizon reached (\%)
+        & Mean enhancement count \\
+        \midrule
+        Base
+        & 0.078 & 0.140 & 0.404 & 822.7 & 22.00 & 78.00 & 0.00 & 0.88 \\
+
+        Cost zero
+        & 0.062 & 0.100 & 0.514 & 2187.6 & 14.00 & 78.00 & 8.00 & 1.06 \\
+
+        Cost 2$\times$ Base
+        & 0.110 & 0.140 & 0.326 & 852.4 & 52.00 & 44.00 & 4.00 & 0.62 \\
+
+        Latency zero
+        & 0.076 & 0.120 & 0.474 & 1760.0 & 22.00 & 70.00 & 8.00 & 1.02 \\
+
+        Latency 2$\times$ Base
+        & 0.074 & 0.120 & 0.430 & 1873.2 & 28.00 & 64.00 & 8.00 & 0.92 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}

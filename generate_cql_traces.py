@@ -48,11 +48,11 @@ logger = logging.getLogger(__name__)
 # -----------------------------
 # Configuration
 # -----------------------------
-MODEL_PATH: str = "models/cql_on_full_tree_terminal_reward_dataset.pt"
+MODEL_PATH: str = "models/cql_on_full_tree_dataset_5000_stop_penalty_coeff02.pt"
 # DATASET_PATH: str = "data/training/mdp_dataset_tree_branches_5000.h5"
 QRELS_PATH: str = "data/qrels.ms-marco-dev.tsv"
 QUERIES_PATH: str = "data/topics.ms-marco-dev.tsv"
-OUTPUT_PATH: str = "results/cql_full_tree_50_msmarco_traces_terminal_reward.csv"
+OUTPUT_PATH: str = "results/cql_full_tree_50_msmarco_traces_stop_penalty_coeff02.csv"
 REFERENCE_QUERY_IDS_PATH: str = "RQs/relevant_csvs/cql_full_tree_traces_50_msmarco_dev.csv"
 
 RANDOM_SEED = 42

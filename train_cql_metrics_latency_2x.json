@@ -1,0 +1,79 @@
+{
+  "config": {
+    "dataset_path": "data/training/mdp_dataset_tree_branches_5000_latency_2x.h5",
+    "random_seed": 42,
+    "hidden_dims": [
+      256,
+      128
+    ],
+    "batch_size": 256,
+    "gamma": 0.99,
+    "learning_rate": 0.0003,
+    "n_critics": 2,
+    "target_update_interval": 8000,
+    "cql_alpha": 1.0,
+    "n_steps": 50000,
+    "n_steps_per_epoch": 10000
+  },
+  "data_stats": {
+    "train_episodes": 19999,
+    "num_actions": 4
+  },
+  "epoch_metrics": [
+    {
+      "epoch": 1,
+      "metrics": {
+        "time_sample_batch": 0.004084219598770142,
+        "time_algorithm_update": 0.013446041440963745,
+        "loss": 1.213596015059948,
+        "td_loss": 0.1282367903444916,
+        "conservative_loss": 1.0853592245578765,
+        "time_step": 0.01767323338985443
+      }
+    },
+    {
+      "epoch": 2,
+      "metrics": {
+        "time_sample_batch": 0.004180867838859558,
+        "time_algorithm_update": 0.0136276620388031,
+        "loss": 0.9225337089002132,
+        "td_loss": 0.0873567750170827,
+        "conservative_loss": 0.8351769335806369,
+        "time_step": 0.017951879119873046
+      }
+    },
+    {
+      "epoch": 3,
+      "metrics": {
+        "time_sample_batch": 0.0043135094165802,
+        "time_algorithm_update": 0.014076866245269775,
+        "loss": 0.8047358360648155,
+        "td_loss": 0.05351216494701803,
+        "conservative_loss": 0.7512236710071564,
+        "time_step": 0.018545093488693237
+      }
+    },
+    {
+      "epoch": 4,
+      "metrics": {
+        "time_sample_batch": 0.004211281037330627,
+        "time_algorithm_update": 0.013540484929084778,
+        "loss": 0.7653682677149772,
+        "td_loss": 0.04089441051166504,
+        "conservative_loss": 0.724473857063055,
+        "time_step": 0.017895630955696105
+      }
+    },
+    {
+      "epoch": 5,
+      "metrics": {
+        "time_sample_batch": 0.004241455245018006,
+        "time_algorithm_update": 0.013612579083442688,
+        "loss": 0.7547002922713757,
+        "td_loss": 0.037715194432996216,
+        "conservative_loss": 0.716985097926855,
+        "time_step": 0.017997262620925904
+      }
+    }
+  ]
+}

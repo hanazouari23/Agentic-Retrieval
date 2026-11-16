@@ -36,3 +36,10 @@ A compact design is:
     Zero coefficient.
     Twice the Base coefficient.
 Run this separately for cost and latency, holding the other terms fixed. That is four additional configurations because Base is shared.
+A 2 × 3 figure:
+
+Rows: cost sweep; latency sweep.
+
+Columns: NDCG, the resource targeted by the sweep, immediate-STOP rate.
+
+Put Recall, the other resource, and enhancement count in a supporting table. This keeps the main figure focused while preserving the complete measurements.

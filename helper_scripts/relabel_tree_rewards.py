@@ -44,14 +44,26 @@ def recompute_reward(
     reward_gamma: float,
     reward_delta: float,
     elapsed_time_norm: float,
+    stop_penalty_coeff: float,
+    stop_penalty_threshold: float,
+    stop_rewarded: bool,
+    stop_reward_ndcg_weight: float,
+    stop_reward_recall_weight: float,
 ) -> float:
     """Recompute reward from logged CSV columns.
 
     Mirrors src.simulation.Simulation._compute_reward.
-    STOP actions always receive 0 reward.
+    STOP actions can receive 0 reward, a penalty based on ndcg_before, or a
+    positive reward based on ndcg_before and recall_before.
     """
     action_name = row["action_name"]
     if action_name == "STOP":
+        ndcg_before = float(row["ndcg_before"]) if pd.notna(row["ndcg_before"]) else 0.0
+        if stop_rewarded:
+            recall_before = float(row["recall_before"]) if pd.notna(row["recall_before"]) else 0.0
+            return stop_reward_ndcg_weight * ndcg_before + stop_reward_recall_weight * recall_before
+        if stop_penalty_coeff != 0.0:
+            return -stop_penalty_coeff * max(0.0, stop_penalty_threshold - ndcg_before)
         return 0.0
 
     ndcg_gain = float(row["ndcg_after"]) - float(row["ndcg_before"])
@@ -76,6 +88,11 @@ def relabel_rewards(
     reward_gamma: float,
     reward_delta: float,
     elapsed_time_norm: float,
+    stop_penalty_coeff: float,
+    stop_penalty_threshold: float,
+    stop_rewarded: bool,
+    stop_reward_ndcg_weight: float,
+    stop_reward_recall_weight: float,
 ) -> None:
     print(f"Loading HDF5: {input_h5}")
     buffer = load_buffer(str(input_h5))
@@ -115,6 +132,11 @@ def relabel_rewards(
             reward_gamma=reward_gamma,
             reward_delta=reward_delta,
             elapsed_time_norm=elapsed_time_norm,
+            stop_penalty_coeff=stop_penalty_coeff,
+            stop_penalty_threshold=stop_penalty_threshold,
+            stop_rewarded=stop_rewarded,
+            stop_reward_ndcg_weight=stop_reward_ndcg_weight,
+            stop_reward_recall_weight=stop_reward_recall_weight,
         ),
         axis=1,
     ).astype(np.float32).values
@@ -201,7 +223,20 @@ def main(argv: Optional[list[str]] = None) -> int:
                         help="Weight for latency penalty (default: 0.1).")
     parser.add_argument("--elapsed-time-norm", type=float, default=DEFAULT_ELAPSED_TIME_NORM,
                         help="Elapsed time normalization divisor in ms (default: 3000.0).")
+    parser.add_argument("--stop-penalty-coeff", type=float, default=0.0,
+                        help="Coefficient for the STOP penalty (default: 0.0).")
+    parser.add_argument("--stop-penalty-threshold", type=float, default=0.2,
+                        help="NDCG threshold for the STOP penalty (default: 0.2).")
+    parser.add_argument("--stop-rewarded", action="store_true",
+                        help="Use a positive STOP reward based on current NDCG/Recall.")
+    parser.add_argument("--stop-reward-ndcg-weight", type=float, default=2.0,
+                        help="NDCG weight for rewarded STOP (default: 2.0).")
+    parser.add_argument("--stop-reward-recall-weight", type=float, default=0.5,
+                        help="Recall weight for rewarded STOP (default: 0.5).")
     args = parser.parse_args(argv)
+
+    if args.stop_rewarded and args.stop_penalty_coeff != 0.0:
+        parser.error("--stop-rewarded and --stop-penalty-coeff cannot both be active.")
 
     relabel_rewards(
         input_h5=args.input_h5,
@@ -212,6 +247,11 @@ def main(argv: Optional[list[str]] = None) -> int:
         reward_gamma=args.reward_gamma,
         reward_delta=args.reward_delta,
         elapsed_time_norm=args.elapsed_time_norm,
+        stop_penalty_coeff=args.stop_penalty_coeff,
+        stop_penalty_threshold=args.stop_penalty_threshold,
+        stop_rewarded=args.stop_rewarded,
+        stop_reward_ndcg_weight=args.stop_reward_ndcg_weight,
+        stop_reward_recall_weight=args.stop_reward_recall_weight,
     )
     return 0
 
