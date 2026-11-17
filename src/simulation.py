@@ -960,20 +960,23 @@ class Simulation:
         """
         Use a trained d3rlpy CQL model to select an action.
 
-        Falls back to the first valid action if the model's prediction
-        violates the operational eligibility mask.
+        Logs a warning if the model's prediction violates the operational
+        eligibility mask, but does not change the selected action.
         """
         if self.policy_model is None:
             raise RuntimeError("CQL policy requested but no policy_model was provided")
 
         obs = np.asarray(state, dtype=np.float32).reshape(1, -1)
-        action = int(self.policy_model.predict(obs)[0])
+        predicted_action = int(self.policy_model.predict(obs)[0])
 
-        if not valid[action]:
-            valid_indices = [i for i, v in enumerate(valid) if v == 1]
-            action = valid_indices[0] if valid_indices else ACTION_STOP
+        if not valid[predicted_action]:
+            logger.warning(
+                "CQL policy selected invalid action %s (valid mask=%s)",
+                ACTION_NAMES.get(predicted_action, predicted_action),
+                valid,
+            )
 
-        return action
+        return predicted_action
 
     def _policy_expert(
         self,

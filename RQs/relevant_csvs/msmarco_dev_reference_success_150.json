@@ -1,0 +1,3362 @@
+{
+  "seed_ids": [
+    "1093322",
+    "922335",
+    "999637",
+    "135386",
+    "1007550",
+    "1086075",
+    "1032011",
+    "384406",
+    "472024",
+    "780613",
+    "1099816",
+    "1098860",
+    "818798",
+    "1003997",
+    "42568",
+    "1100167",
+    "704072",
+    "1022178",
+    "499568",
+    "1059601",
+    "862742",
+    "169778",
+    "944700",
+    "34015",
+    "987230",
+    "359040",
+    "526671",
+    "756949",
+    "453705",
+    "984434",
+    "833268",
+    "1080537",
+    "1087105",
+    "1063177",
+    "1090987",
+    "952388",
+    "277799",
+    "1073721",
+    "1094191",
+    "541135",
+    "769630",
+    "1095942",
+    "523621",
+    "1067826",
+    "1036800",
+    "1091688",
+    "527769",
+    "266760",
+    "1083945",
+    "989296",
+    "1087061",
+    "73119",
+    "861169",
+    "1096049",
+    "1085510",
+    "257335",
+    "281704",
+    "607855",
+    "1086874",
+    "329114",
+    "112318",
+    "548254",
+    "1096840",
+    "622658",
+    "896383",
+    "1100541",
+    "1045374",
+    "778890",
+    "1089022",
+    "612670",
+    "1091719"
+  ],
+  "tried_ids": [
+    "1093322",
+    "922335",
+    "999637",
+    "135386",
+    "1007550",
+    "1086075",
+    "1032011",
+    "384406",
+    "472024",
+    "780613",
+    "1099816",
+    "1098860",
+    "818798",
+    "1003997",
+    "42568",
+    "1100167",
+    "704072",
+    "1022178",
+    "499568",
+    "1059601",
+    "862742",
+    "169778",
+    "944700",
+    "34015",
+    "987230",
+    "359040",
+    "526671",
+    "756949",
+    "453705",
+    "984434",
+    "833268",
+    "1080537",
+    "1087105",
+    "1063177",
+    "1090987",
+    "952388",
+    "277799",
+    "1073721",
+    "1094191",
+    "541135",
+    "769630",
+    "1095942",
+    "523621",
+    "1067826",
+    "1036800",
+    "1091688",
+    "527769",
+    "266760",
+    "1083945",
+    "989296",
+    "1088993",
+    "272500",
+    "115930",
+    "92542",
+    "76283",
+    "206762",
+    "1087061",
+    "785176",
+    "1084512",
+    "993153",
+    "537410",
+    "482666",
+    "1085572",
+    "73119",
+    "83458",
+    "1029124",
+    "11006",
+    "846438",
+    "522953",
+    "730278",
+    "861169",
+    "675320",
+    "117683",
+    "1051112",
+    "1096776",
+    "993501",
+    "507221",
+    "980789",
+    "1096049",
+    "594930",
+    "157580",
+    "1087042",
+    "1085510",
+    "992132",
+    "299732",
+    "172608",
+    "551309",
+    "632825",
+    "1066916",
+    "1007696",
+    "257335",
+    "1091059",
+    "185009",
+    "1083127",
+    "653041",
+    "174344",
+    "843409",
+    "293401",
+    "281704",
+    "342450",
+    "912898",
+    "559018",
+    "607855",
+    "1086874",
+    "972064",
+    "904007",
+    "480504",
+    "962731",
+    "1097213",
+    "704080",
+    "432653",
+    "329114",
+    "634412",
+    "879155",
+    "1099288",
+    "256192",
+    "878959",
+    "1097317",
+    "1008968",
+    "709560",
+    "112318",
+    "73853",
+    "549219",
+    "548254",
+    "605648",
+    "1061762",
+    "144694",
+    "985905",
+    "635125",
+    "922398",
+    "329901",
+    "406181",
+    "1016281",
+    "764139",
+    "196232",
+    "1007606",
+    "1093962",
+    "632923",
+    "618408",
+    "783098",
+    "893789",
+    "995280",
+    "198581",
+    "961048",
+    "860071",
+    "1093305",
+    "507087",
+    "400696",
+    "1085288",
+    "282214",
+    "302337",
+    "1095725",
+    "1096840",
+    "820899",
+    "814282",
+    "992618",
+    "448630",
+    "1011381",
+    "1040461",
+    "622658",
+    "528841",
+    "1089414",
+    "257885",
+    "896383",
+    "421813",
+    "1089001",
+    "653187",
+    "997860",
+    "1096532",
+    "298550",
+    "525779",
+    "107812",
+    "765147",
+    "1100541",
+    "1030324",
+    "1087729",
+    "394021",
+    "846513",
+    "1035278",
+    "1097027",
+    "1045374",
+    "778890",
+    "786674",
+    "855050",
+    "1021554",
+    "1056758",
+    "1089022",
+    "961921",
+    "663388",
+    "612670",
+    "25294",
+    "757644",
+    "1084324",
+    "1020724",
+    "227992",
+    "560357",
+    "1091194",
+    "1091719",
+    "753480",
+    "1097721"
+  ],
+  "target": 150,
+  "min_results": 50,
+  "seed": 42,
+  "batches": [
+    {
+      "batch_index": 1,
+      "candidate_ids": [
+        "749752",
+        "408945",
+        "1029058",
+        "872081",
+        "998417",
+        "738162",
+        "244092",
+        "412597",
+        "395038",
+        "570070",
+        "862345",
+        "1007473",
+        "948797",
+        "303777",
+        "762652",
+        "1043658",
+        "926064",
+        "1029031",
+        "759038",
+        "728823",
+        "717751",
+        "874691",
+        "516029",
+        "907173",
+        "995825",
+        "1084197",
+        "585378",
+        "998381",
+        "202073",
+        "699872",
+        "75266",
+        "441409",
+        "994005",
+        "1024069",
+        "1089002",
+        "466738",
+        "1037341",
+        "1022577",
+        "1047642",
+        "206549",
+        "1085584",
+        "800652",
+        "641618",
+        "1092865",
+        "1094394",
+        "996825",
+        "1003875",
+        "1040082",
+        "274981",
+        "555750",
+        "80712",
+        "499413",
+        "990414",
+        "1006922",
+        "917022",
+        "1094578",
+        "909886",
+        "808235",
+        "942354",
+        "1059646",
+        "839137",
+        "1092311",
+        "919913",
+        "543813",
+        "1070412",
+        "1092665",
+        "731902",
+        "448123",
+        "568585",
+        "79891",
+        "798469",
+        "548099",
+        "96310",
+        "1093698",
+        "840061",
+        "334558",
+        "1055125",
+        "1012866",
+        "904295"
+      ],
+      "results": [
+        {
+          "query_id": "749752",
+          "query": "what is gabba",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "408945",
+          "query": "is dylan o'brien related to adam brody",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1029058",
+          "query": "what is used to help with urinary leakage surgeries",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "872081",
+          "query": "what language do the minions speak in despicable me",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "998417",
+          "query": "where is mt rainier",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "738162",
+          "query": "what is definition of fever",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "244092",
+          "query": "how long do allergic rashes last",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "412597",
+          "query": "is hummus high in protein",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "395038",
+          "query": "inconsistency meaning",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "570070",
+          "query": "what are the four steps of the scientific method",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "862345",
+          "query": "what is wdm",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1007473",
+          "query": "_______ sediments originate from elements in seawater that precipitate out of solution.",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "948797",
+          "query": "when drake was born",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "303777",
+          "query": "how much coffee is safe per day pregnancy",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "762652",
+          "query": "what is jupiter's core composition",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1043658",
+          "query": "what is the bracket",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "926064",
+          "query": "what year did college basketball start a three point shot",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1029031",
+          "query": "what is usta",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "759038",
+          "query": "what is infinite tv",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "728823",
+          "query": "what is cec on soil test",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "717751",
+          "query": "what is analytical approach to intelligence",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "874691",
+          "query": "what major do you need to be a veterinarian",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "516029",
+          "query": "the first and second discourse moral",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "907173",
+          "query": "what to eat during migraine",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "995825",
+          "query": "where is the graphic card located in the cpu",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "1084197",
+          "query": "what does attorneys charge for malpractice cases",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "585378",
+          "query": "what causes anemia symptoms",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "998381",
+          "query": "where is the willamette stone located?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "202073",
+          "query": "highest dosage of aspirin",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "699872",
+          "query": "what is a shotgun",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "75266",
+          "query": "can vcenter standard manage essentials plus",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "441409",
+          "query": "little caesars italian cheese bread calories",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "994005",
+          "query": "which molecule is split apart in photosystem ii?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1024069",
+          "query": "what neuron causes a muscle to move",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1089002",
+          "query": "vermont casting group phone number",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "466738",
+          "query": "number of moves in chess",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1037341",
+          "query": "who is quinn of ny",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1022577",
+          "query": "which ventricle of the heart has the thickest myocardium layer and why",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1047642",
+          "query": "what is ptztv",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "206549",
+          "query": "house is settling and outside wall is cracked",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1085584",
+          "query": "carbon reactivation facilities california",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "800652",
+          "query": "what is subsidized vs unsubsidized",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "641618",
+          "query": "what does it mean your body in ketosis",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "1092865",
+          "query": "medical definition of caustics",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1094394",
+          "query": "acetate definition",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "996825",
+          "query": "where is vanderbilt located?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1003875",
+          "query": "where was the mediterranean gecko introduced",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1040082",
+          "query": "what is the effect of third person omniscient",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "274981",
+          "query": "how many atp does glycolysis produce",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "555750",
+          "query": "what are boot devices?",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "80712",
+          "query": "can you use merge things together in one table",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "499413",
+          "query": "slumped definition",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "990414",
+          "query": "who is james b duke",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "1006922",
+          "query": "which chromosome controls sex characteristics",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "917022",
+          "query": "what vitamin is lacking in elderly women",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1094578",
+          "query": "average window installation cost",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "909886",
+          "query": "what two things make up cell membrane",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "808235",
+          "query": "what is the best erectile dysfunction pill",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "942354",
+          "query": "when did the transformers cartoon series come out?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1059646",
+          "query": "who's voice come from?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "839137",
+          "query": "what is the phantom zone",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1092311",
+          "query": "names of flags in french",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "919913",
+          "query": "what was the dark ages",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "543813",
+          "query": "weather in cleveland area",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1070412",
+          "query": "why is health communications",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1092665",
+          "query": "minnesota's current population",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "731902",
+          "query": "what is coffee flour",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "448123",
+          "query": "meaning of last name, harrison",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "568585",
+          "query": "what are the criminal charges for  passing bad checks",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "79891",
+          "query": "can you substitute chocolate chips for semi-sweet",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "798469",
+          "query": "what is special about starfish",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "548099",
+          "query": "wellcare mike vice president",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "96310",
+          "query": "composition and functions of blood types",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1093698",
+          "query": "ketamine withdrawal symptoms",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "840061",
+          "query": "what is the population of perryville missouri",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "334558",
+          "query": "how old is canada",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1055125",
+          "query": "what is force fluids mean",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1012866",
+          "query": "what was elvis presley's wife's name",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "904295",
+          "query": "what time do the american stock markets open",
+          "success": false,
+          "num_results": 0
+        }
+      ]
+    },
+    {
+      "batch_index": 2,
+      "candidate_ids": [
+        "575492",
+        "693469",
+        "1087317",
+        "960265",
+        "952520",
+        "909547",
+        "993419",
+        "1085197",
+        "690801",
+        "47864",
+        "568895",
+        "657091",
+        "1084403",
+        "1005113",
+        "19940",
+        "1013267",
+        "1063607",
+        "872347",
+        "127984",
+        "527568",
+        "450788",
+        "478827",
+        "995787",
+        "586790",
+        "783277",
+        "552868",
+        "1034666",
+        "153981",
+        "227637",
+        "129837",
+        "1006199",
+        "7968",
+        "864507",
+        "792977",
+        "4947",
+        "575616",
+        "577813",
+        "1089691",
+        "980726",
+        "724947",
+        "435794",
+        "1051422",
+        "438316",
+        "185276",
+        "816483",
+        "66154",
+        "1068584",
+        "183874",
+        "779475",
+        "780336",
+        "994338",
+        "1087074",
+        "226461",
+        "436475",
+        "155234",
+        "539601",
+        "1043064",
+        "1086248",
+        "1085980",
+        "488676",
+        "753299",
+        "627085",
+        "36703",
+        "946747",
+        "411953",
+        "1079868",
+        "1093006"
+      ],
+      "results": [
+        {
+          "query_id": "575492",
+          "query": "what are the uses of flexseed oil",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "693469",
+          "query": "what is a pacemaker for",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1087317",
+          "query": "what are signs of anxiety in your chest",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "960265",
+          "query": "when was the articles of confederation adopted by congress",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "952520",
+          "query": "when is the best time to visit spain?",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "909547",
+          "query": "what tv series theme song was woke up this morning?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "993419",
+          "query": "where is st martin",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1085197",
+          "query": "what covers the sclera",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "690801",
+          "query": "what is a meteorologist term mcv",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "47864",
+          "query": "awareness of others definition",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "568895",
+          "query": "what are the different kinds of arthritis",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "657091",
+          "query": "what else can marijuana be used for",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1084403",
+          "query": "what does a rightward shift in a supply curve indicate",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1005113",
+          "query": "when do you start planting from seed",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "19940",
+          "query": "aplastic anemia causes and symptoms",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1013267",
+          "query": "what vitamins help clear vision",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "1063607",
+          "query": "columbine massacre killed how many people",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "872347",
+          "query": "what language does trinidad speak",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "127984",
+          "query": "define tension stress",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "527568",
+          "query": "types of ethnic foods list",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "450788",
+          "query": "mechanical errors definition",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "478827",
+          "query": "postage cost for letter",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "995787",
+          "query": "which bbc radio station specializes in sports commentaries",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "586790",
+          "query": "what causes coronary artery calcification",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "783277",
+          "query": "what is ph of bleach",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "552868",
+          "query": "what airport to use to get to tuscany region of italy",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1034666",
+          "query": "what is the philosophic legacy of aristotle",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "153981",
+          "query": "distance phoenix to nogales",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "227637",
+          "query": "how does spicy food affect testosterone",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "129837",
+          "query": "define: wrongful prosecution",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "1006199",
+          "query": "when did rosalind franklin take x ray pictures of dna",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "7968",
+          "query": "When did the earthquake hit San Francisco during the World Series",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "864507",
+          "query": "what is your mandible",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "792977",
+          "query": "what is sacrococcygeal",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "4947",
+          "query": "Ludacris Net Worth",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "575616",
+          "query": "what are the weight an ankole cattle",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "577813",
+          "query": "what astrological sign is kim kardashian",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1089691",
+          "query": "the word said hello in swedish",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "980726",
+          "query": "where is crestwood village, nj",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "724947",
+          "query": "what is bmc neuroscience",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "435794",
+          "query": "largest airport near lake clear ny",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1051422",
+          "query": "what is mean streaming",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "438316",
+          "query": "leading causes of death in united states",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "185276",
+          "query": "fastest car in the world motor tr",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "816483",
+          "query": "what is the difference between a medical doctor and a doctor of osteopathic",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "66154",
+          "query": "can crystals cause dizziness",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1068584",
+          "query": "what is a purchase order definition",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "183874",
+          "query": "explain the structure of bone tissue",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "779475",
+          "query": "what is one role of the element phosphorus?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "780336",
+          "query": "what is orthorexia",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "994338",
+          "query": "which is a vascular tissue in plants?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1087074",
+          "query": "what are the different forms of marijuana",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "226461",
+          "query": "how does hipaa protect workers?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "436475",
+          "query": "largest flea market in alabama",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "155234",
+          "query": "do bigger tires affect gas mileage",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "539601",
+          "query": "was abraham lincoln half black",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1043064",
+          "query": "what is the chemical formula for oxygen tetrafluoride?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1086248",
+          "query": "what causes a prickly itchy feeling all over",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1085980",
+          "query": "can you tell me where the actor william devane was born",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "488676",
+          "query": "retinue define",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "753299",
+          "query": "what is haile selassie famous for",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "627085",
+          "query": "what do you use for oxygen facial machines",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "36703",
+          "query": "average gas prices in ga",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "946747",
+          "query": "when does irs mail checks",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "411953",
+          "query": "is hctz safe for kidneys",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1079868",
+          "query": "world's largest bass caught",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1093006",
+          "query": "meaning of maturity for loan",
+          "success": false,
+          "num_results": 0
+        }
+      ]
+    },
+    {
+      "batch_index": 3,
+      "candidate_ids": [
+        "149801",
+        "180592",
+        "1062332",
+        "1092858",
+        "375891",
+        "473319",
+        "1050670",
+        "1070867",
+        "582641",
+        "703383",
+        "1093094",
+        "990938",
+        "1083267",
+        "456016",
+        "541969",
+        "1074883",
+        "1036244",
+        "30956",
+        "479570",
+        "1084769",
+        "624503",
+        "173391",
+        "1048917",
+        "778095",
+        "978802",
+        "709559",
+        "450851",
+        "1092482",
+        "792900",
+        "1089683",
+        "96602",
+        "121017",
+        "1074001",
+        "1086022",
+        "47270",
+        "1073640",
+        "782079",
+        "64528",
+        "1100454",
+        "784549",
+        "1096257",
+        "212195",
+        "792463",
+        "1095055",
+        "637208",
+        "767745",
+        "143025",
+        "623281",
+        "771170",
+        "1083704",
+        "1095354",
+        "1090413",
+        "983499",
+        "700618"
+      ],
+      "results": [
+        {
+          "query_id": "149801",
+          "query": "different kind of kidney stones",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "180592",
+          "query": "english came from what language",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1062332",
+          "query": "what is an rs in money",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "1092858",
+          "query": "medical meaning of pec",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "375891",
+          "query": "how to remove cat allergens from house",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "473319",
+          "query": "percentage of cases that settle before trial",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1050670",
+          "query": "who sing the song just swinging",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1070867",
+          "query": "why is it important to have a good job description for any position",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "582641",
+          "query": "what can you do with a behavioral neuroscience degree",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "703383",
+          "query": "what is a thoracentesis",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "1093094",
+          "query": "benefit to prostate massage",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "990938",
+          "query": "who is dav pilkey",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1083267",
+          "query": "what does penicillin treat in humans and animals",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "456016",
+          "query": "moon spiritual meaning",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "541969",
+          "query": "watt to kilowatt hours",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1074883",
+          "query": "ciprofloxacin how to take",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1036244",
+          "query": "what is the medication to treat dementia",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "30956",
+          "query": "average annual income for rn in illinois",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "479570",
+          "query": "pregnancy symptoms by day",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1084769",
+          "query": "what do lenders use as you dti",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "624503",
+          "query": "what do potatoes grow from",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "173391",
+          "query": "does tryptophan become niacin",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1048917",
+          "query": "what is operating system misconfiguration",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "778095",
+          "query": "what is npt standard",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "978802",
+          "query": "where is browerville mn",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "709559",
+          "query": "what is all considered common stock for accounting",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "450851",
+          "query": "media definition examples",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "1092482",
+          "query": "benefits of jackfruit for diabetes",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "792900",
+          "query": "what is rylon",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1089683",
+          "query": "thermo fisher scientific benefits",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "96602",
+          "query": "concomitant, definition",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "121017",
+          "query": "define engineering controls",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1074001",
+          "query": "what is a egpu",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1086022",
+          "query": "what causes white film in mouth",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "47270",
+          "query": "average weight for a pug",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1073640",
+          "query": "what is a fetty wap",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "782079",
+          "query": "what is paydex score for a business",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "64528",
+          "query": "can anyone take prenatal vitamins?",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "1100454",
+          "query": "foods to raise my creatinine level",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "784549",
+          "query": "what is pleurisy symptoms",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1096257",
+          "query": "how much does a audit senior make",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "212195",
+          "query": "how could the courts check the bureaucracy",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "792463",
+          "query": "what is rotator cuff tendonitis",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1095055",
+          "query": "how soon do symptoms show up for hiv",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "637208",
+          "query": "what does excel isna mean",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "767745",
+          "query": "what is mag",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "143025",
+          "query": "dianna dahlgren net worth",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "623281",
+          "query": "what do hand therapists do",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "771170",
+          "query": "what is mercury's orbital period",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1083704",
+          "query": "what does heather smell like",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1095354",
+          "query": "how much will i receive on unemployment compensation pennsylvania",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1090413",
+          "query": "state the benefits of internet",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "983499",
+          "query": "where is gold located with the earth",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "700618",
+          "query": "what is a socket address",
+          "success": false,
+          "num_results": 0
+        }
+      ]
+    },
+    {
+      "batch_index": 4,
+      "candidate_ids": [
+        "419326",
+        "916901",
+        "457809",
+        "851813",
+        "1096429",
+        "917015",
+        "1060616",
+        "239189",
+        "1043568",
+        "724571",
+        "1096065",
+        "227317",
+        "760367",
+        "1042399",
+        "1096866",
+        "947974",
+        "236582",
+        "208339",
+        "812190",
+        "724579",
+        "183723",
+        "805900",
+        "717845",
+        "403793",
+        "155056",
+        "418926",
+        "809933",
+        "1027919",
+        "274175",
+        "658372",
+        "1088379",
+        "556476",
+        "653092",
+        "119089",
+        "478220",
+        "587326",
+        "1028711",
+        "1085812",
+        "913509",
+        "840532",
+        "1095699",
+        "1047708"
+      ],
+      "results": [
+        {
+          "query_id": "419326",
+          "query": "is nitroglycerin a vasodilator",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "916901",
+          "query": "what vitamin deficiency causes mouth sores",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "457809",
+          "query": "most expensive sports franchise",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "851813",
+          "query": "what is the treatment of throat voice box?",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "1096429",
+          "query": "how much bitcoins are there in the world",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "917015",
+          "query": "what vitamin is hard to absorb in our bodies",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1060616",
+          "query": "why are junction mounts needed for cameras",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "239189",
+          "query": "how long after pap smear will i receive results",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1043568",
+          "query": "what is the bryozoans",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "724571",
+          "query": "what is blackleg",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1096065",
+          "query": "how much does it cost to run for state representative",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "227317",
+          "query": "how does programmatic buying work",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "760367",
+          "query": "what is involved in the role of supply chain management",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1042399",
+          "query": "who is tom cavanagh?",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "1096866",
+          "query": "how many oz in a lb?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "947974",
+          "query": "when does the fall start",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "236582",
+          "query": "how is dry eyes preventable",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "208339",
+          "query": "how big can caimans get",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "812190",
+          "query": "what is the constitution act 1867",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "724579",
+          "query": "what is blackwater called now",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "183723",
+          "query": "explain how urinary tract infections cause both hematuria and pyuria",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "805900",
+          "query": "what is the average cost of a home in santa rosa california",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "717845",
+          "query": "what is andrea tantaros doing",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "403793",
+          "query": "is badminton a sport",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "155056",
+          "query": "do astronauts sleep on their back",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "418926",
+          "query": "is narcotics anonymous effective",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "809933",
+          "query": "what is the capital city in japan",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1027919",
+          "query": "what kind idea had wovoka",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "274175",
+          "query": "how many 1000 in 1 million",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "658372",
+          "query": "what event started world war 1",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1088379",
+          "query": "calories for chocolate chips",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "556476",
+          "query": "what are chemistry hubs",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "653092",
+          "query": "what does the term extradite mean",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "119089",
+          "query": "define cleft",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "478220",
+          "query": "population of skagway alaska",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "587326",
+          "query": "what causes dry mouth medications",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1028711",
+          "query": "what is wells fargo go far reward",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1085812",
+          "query": "advertorial meaning",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "913509",
+          "query": "what type of muscle contains actin and myosin",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "840532",
+          "query": "what is the prevalence of overweight among children and adolescents in the u.s, and what are the contributing factors?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1095699",
+          "query": "how much money did the nra give to ted cruz of texas senate",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1047708",
+          "query": "what is proprietary asset management",
+          "success": false,
+          "num_results": 0
+        }
+      ]
+    },
+    {
+      "batch_index": 5,
+      "candidate_ids": [
+        "559709",
+        "184105",
+        "897476",
+        "741977",
+        "1085422",
+        "324645",
+        "89786",
+        "166625",
+        "682626",
+        "503580",
+        "1085779",
+        "636949",
+        "1101228",
+        "632726",
+        "17848",
+        "112718",
+        "1091983",
+        "1101271",
+        "166748",
+        "1085697",
+        "1091340",
+        "1071270",
+        "1065712",
+        "680490",
+        "1007242",
+        "830531",
+        "611152",
+        "264410",
+        "998965",
+        "575096",
+        "221664",
+        "61623",
+        "301061",
+        "1062589"
+      ],
+      "results": [
+        {
+          "query_id": "559709",
+          "query": "what are guitar plectrums",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "184105",
+          "query": "explanation of resistance, voltage, and current",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "897476",
+          "query": "what state has the easiest bar exam",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "741977",
+          "query": "what is dynamics",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1085422",
+          "query": "what county is new london tx",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "324645",
+          "query": "how much money do speech",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "89786",
+          "query": "central city definition",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "166625",
+          "query": "does gastritis cause leaky gut",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "682626",
+          "query": "what is a epo network",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "503580",
+          "query": "stepford wife definition",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1085779",
+          "query": "canopius us insurance inc phone number",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "636949",
+          "query": "what does eobr means",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1101228",
+          "query": "does bromelain help with weight loss",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "632726",
+          "query": "what does awesome cleaner clean",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "17848",
+          "query": "anatomy origin definition",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "112718",
+          "query": "crew fort worth application",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "1091983",
+          "query": "operation did not complete successfully because the file contains",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1101271",
+          "query": "do vhi swiftcare do blood tests?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "166748",
+          "query": "does global entry include tsa",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1085697",
+          "query": "what county is albany mo",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1091340",
+          "query": "price on toyota corolla finder",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1071270",
+          "query": "why is metric system also called decimal systems of units",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1065712",
+          "query": "what is a unit step response",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "680490",
+          "query": "what is a dda account balance",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1007242",
+          "query": "when did blender come out",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "830531",
+          "query": "what is the maximum yearly retirement contributions",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "611152",
+          "query": "what county is pennsboro wv in?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "264410",
+          "query": "how long is recovery from hemorrhoid banding",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "998965",
+          "query": "definition diagram",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "575096",
+          "query": "what are the two largest climate regions in canada?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "221664",
+          "query": "how do you cook turkey necks",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "61623",
+          "query": "can Climbing Roses grow as bush roses?",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "301061",
+          "query": "how many years is the term for mi supreme court judges",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1062589",
+          "query": "what is an nslookup",
+          "success": false,
+          "num_results": 0
+        }
+      ]
+    },
+    {
+      "batch_index": 6,
+      "candidate_ids": [
+        "249321",
+        "586268",
+        "792789",
+        "1097894",
+        "601684",
+        "642032",
+        "591993",
+        "92509",
+        "1062511",
+        "412982",
+        "1014264",
+        "1040532",
+        "890532",
+        "1080970",
+        "1096126",
+        "1091765",
+        "988269",
+        "418165",
+        "1071545",
+        "1095165",
+        "1086886",
+        "709342",
+        "1096258",
+        "788484",
+        "245416",
+        "1056644",
+        "1020915",
+        "544319",
+        "108622",
+        "497132"
+      ],
+      "results": [
+        {
+          "query_id": "249321",
+          "query": "how long does a duck egg take to hatch",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "586268",
+          "query": "what causes busted blood vessels",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "792789",
+          "query": "what is rumination syndrome",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1097894",
+          "query": "how long lsd last in urine",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "601684",
+          "query": "what country does fennel come from",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "642032",
+          "query": "what does kusum mean",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "591993",
+          "query": "what causes spots on tree leaves",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "92509",
+          "query": "circadian rhythm disorders symptoms",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1062511",
+          "query": "what is an office administrative assistant salary in alabama",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "412982",
+          "query": "is indirect labor an overhead cost",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1014264",
+          "query": "what type of seating is on condor",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "1040532",
+          "query": "what is the difference between server ram and pc ram",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "890532",
+          "query": "what record label is shawn mendes signed to",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "1080970",
+          "query": "what foods are good for lupus",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1096126",
+          "query": "how much does fake teeth surgery cost",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1091765",
+          "query": "people who were accused of being communist",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "988269",
+          "query": "where is moravian falls",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "418165",
+          "query": "is milk a protein",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1071545",
+          "query": "what is a labia?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1095165",
+          "query": "how old is ricki lander?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1086886",
+          "query": "what are the products and by products of photosynthesis?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "709342",
+          "query": "what is alcohol used for",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1096258",
+          "query": "average price of farmland nebraska",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "788484",
+          "query": "what is purpose of sim card",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "245416",
+          "query": "how long do i bake squash seeds",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1056644",
+          "query": "what is diflorasone diacetate cream used for",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1020915",
+          "query": "which term describes a reduction",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "544319",
+          "query": "weather in gig harbor, wa",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "108622",
+          "query": "cost root canal",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "497132",
+          "query": "should you use lead or lag time in project schedules",
+          "success": false,
+          "num_results": 0
+        }
+      ]
+    },
+    {
+      "batch_index": 7,
+      "candidate_ids": [
+        "498478",
+        "1033205",
+        "900696",
+        "994830",
+        "641284",
+        "1051352",
+        "1050747",
+        "1045203",
+        "1091246",
+        "505541",
+        "1019724",
+        "1102206",
+        "1037407",
+        "1012547",
+        "637459",
+        "743708",
+        "1088856",
+        "490883",
+        "484454",
+        "192894",
+        "300306",
+        "516413",
+        "130932",
+        "150087"
+      ],
+      "results": [
+        {
+          "query_id": "498478",
+          "query": "simpsons what rear first episode",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1033205",
+          "query": "what is the range of the summer tanager",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "900696",
+          "query": "what team was shelton benjamin a part of wwe",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "994830",
+          "query": "which epithelia contain two or more cell layers",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "641284",
+          "query": "what does it mean when you dream about babies",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1051352",
+          "query": "what is mechanical advantages in science terms",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1050747",
+          "query": "who sings arabian nights aladdin",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1045203",
+          "query": "who owns cnn cable news network",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1091246",
+          "query": "property premises meaning",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "505541",
+          "query": "suprapubic prostatectomy definition",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1019724",
+          "query": "what stores are in the manchester nh mall",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1102206",
+          "query": "definition of sentimentality",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1037407",
+          "query": "who is rashida jones related to",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1012547",
+          "query": "what was stalin scorched earth policy",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "637459",
+          "query": "what does fdg mean",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "743708",
+          "query": "what is emulation",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1088856",
+          "query": "war thunder launcher",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "490883",
+          "query": "rwa definition",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "484454",
+          "query": "qualitative quantitative research definition",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "192894",
+          "query": "furthest distance man has traveled in space",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "300306",
+          "query": "how many words make up a page",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "516413",
+          "query": "the hormone that is essential for growth is produced in the?___________________",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "130932",
+          "query": "definition for naive",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "150087",
+          "query": "different types led lights",
+          "success": true,
+          "num_results": 50
+        }
+      ]
+    },
+    {
+      "batch_index": 8,
+      "candidate_ids": [
+        "1017529",
+        "710914",
+        "143293",
+        "735387",
+        "689700",
+        "299023",
+        "97295",
+        "1075608",
+        "853471",
+        "38608",
+        "459948",
+        "1101977",
+        "1021065",
+        "131768",
+        "798945",
+        "1090613",
+        "55682",
+        "393954",
+        "160339",
+        "1087722"
+      ],
+      "results": [
+        {
+          "query_id": "1017529",
+          "query": "what to do for a sore wrist",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "710914",
+          "query": "what is an acl",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "143293",
+          "query": "did andy gibb die",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "735387",
+          "query": "what is county for seattle?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "689700",
+          "query": "what is a macchiato coffee drink",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "299023",
+          "query": "how many u.s. house members does each state have",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "97295",
+          "query": "consolidate function",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "1075608",
+          "query": "chrome defined",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "853471",
+          "query": "what is the weather in death valley",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "38608",
+          "query": "average loan payment for car",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "459948",
+          "query": "mouth sores from dental work",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1101977",
+          "query": "why must oil be used with oil immersion lens",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1021065",
+          "query": "what series are on amazon prime",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "131768",
+          "query": "definition of a pest",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "798945",
+          "query": "what is spotting",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1090613",
+          "query": "slainte - meaning?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "55682",
+          "query": "botulism symptoms diagnosis and treatment",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "393954",
+          "query": "in what county is honea path sc",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "160339",
+          "query": "do you have to collect copays",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1087722",
+          "query": "what are catgut strings?",
+          "success": false,
+          "num_results": 0
+        }
+      ]
+    },
+    {
+      "batch_index": 9,
+      "candidate_ids": [
+        "728110",
+        "144491",
+        "971213",
+        "1009527",
+        "1055717",
+        "1085245",
+        "1023025",
+        "62411",
+        "1063478",
+        "1040312",
+        "1035228",
+        "155119",
+        "995176",
+        "1093487",
+        "791223",
+        "1017476",
+        "831474"
+      ],
+      "results": [
+        {
+          "query_id": "728110",
+          "query": "what is carvedilol used for",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "144491",
+          "query": "did mark wahlberg really sing in rock star movie",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "971213",
+          "query": "where do morel mushrooms grow?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1009527",
+          "query": "what's grounding",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "1055717",
+          "query": "what is epic database for healthcare",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1085245",
+          "query": "what county is upper saddle river nj in",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1023025",
+          "query": "what part of florida is patrick air force base",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "62411",
+          "query": "can a grandparent open a 529 plan for a grandchild",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1063478",
+          "query": "columbus texas is in what county",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1040312",
+          "query": "what is the difference of islands and continents",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1035228",
+          "query": "who is legalshield",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "155119",
+          "query": "do bacteria cells have a ribosomes",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "995176",
+          "query": "where is the county of cook",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1093487",
+          "query": "laws synonyms",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "791223",
+          "query": "what is restoril medication",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1017476",
+          "query": "what to do i complain to when your job is micromanaged",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "831474",
+          "query": "what is the meaning of service tenure",
+          "success": false,
+          "num_results": 0
+        }
+      ]
+    },
+    {
+      "batch_index": 10,
+      "candidate_ids": [
+        "992659",
+        "874914",
+        "70340",
+        "1087129",
+        "855029",
+        "1081595",
+        "988787",
+        "1083686",
+        "422624",
+        "249118",
+        "59084",
+        "1003114"
+      ],
+      "results": [
+        {
+          "query_id": "992659",
+          "query": "which type of wave cannot have compressions and rarefactions?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "874914",
+          "query": "what makes a drink a crush",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "70340",
+          "query": "can inheritance monies be taken by the trustee in bankruptcy",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1087129",
+          "query": "what are the causes of rising health care costs?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "855029",
+          "query": "what is the zip code for harahan la",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1081595",
+          "query": "what federal statute gives the epa authority to regulate pesticides",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "988787",
+          "query": "who is the judge michael day district court of south dakota",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "1083686",
+          "query": "what does homesteads mean",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "422624",
+          "query": "is rituximab a vaccine",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "249118",
+          "query": "how long does a collection stay on your credit report",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "59084",
+          "query": "calling powershell functions",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1003114",
+          "query": "where was paul newman born",
+          "success": false,
+          "num_results": 0
+        }
+      ]
+    },
+    {
+      "batch_index": 11,
+      "candidate_ids": [
+        "1041043",
+        "1093038",
+        "428113",
+        "669046",
+        "160255",
+        "1093855",
+        "1087484",
+        "227591",
+        "703765",
+        "946825"
+      ],
+      "results": [
+        {
+          "query_id": "1041043",
+          "query": "what is the difference between a c-corp and a s-corp?",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "1093038",
+          "query": "meaning of house arrest",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "428113",
+          "query": "is there a difference in mitosis between animal and plant cells?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "669046",
+          "query": "what herbs go with salmon",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "160255",
+          "query": "do you give a toast at rehearsal dinner",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1093855",
+          "query": "is vilazodone a ssri",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1087484",
+          "query": "what are mofongo",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "227591",
+          "query": "how does society affect the individual",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "703765",
+          "query": "what is a topographical map",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "946825",
+          "query": "when does la liga espanola start",
+          "success": true,
+          "num_results": 50
+        }
+      ]
+    },
+    {
+      "batch_index": 12,
+      "candidate_ids": [
+        "930326",
+        "984075",
+        "872632",
+        "985360",
+        "100250"
+      ],
+      "results": [
+        {
+          "query_id": "930326",
+          "query": "what's good for sinus pressure",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "984075",
+          "query": "where is hamvir's rest in skyrim",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "872632",
+          "query": "what language is tigrinya",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "985360",
+          "query": "who wrote we just disagree original",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "100250",
+          "query": "cosmology what is the dark ages",
+          "success": false,
+          "num_results": 0
+        }
+      ]
+    },
+    {
+      "batch_index": 13,
+      "candidate_ids": [
+        "961950",
+        "879869",
+        "1065160",
+        "1079535"
+      ],
+      "results": [
+        {
+          "query_id": "961950",
+          "query": "when was the northridge california earthquake",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "879869",
+          "query": "what muscles are used when running",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "1065160",
+          "query": "what is a wrongful act for directors and officers",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "1079535",
+          "query": "what grade on final do i need",
+          "success": false,
+          "num_results": 0
+        }
+      ]
+    },
+    {
+      "batch_index": 14,
+      "candidate_ids": [
+        "783433",
+        "1068290",
+        "523062"
+      ],
+      "results": [
+        {
+          "query_id": "783433",
+          "query": "what is philosophical anthropology",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "1068290",
+          "query": "what is a realpolitik",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "523062",
+          "query": "tourist attractions in geneva switzerland",
+          "success": false,
+          "num_results": 0
+        }
+      ]
+    },
+    {
+      "batch_index": 15,
+      "candidate_ids": [
+        "611199",
+        "985167"
+      ],
+      "results": [
+        {
+          "query_id": "611199",
+          "query": "what county is perris ca in",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "985167",
+          "query": "why are insulators used to cover the conducting wires",
+          "success": false,
+          "num_results": 0
+        }
+      ]
+    },
+    {
+      "batch_index": 16,
+      "candidate_ids": [
+        "590861",
+        "745469"
+      ],
+      "results": [
+        {
+          "query_id": "590861",
+          "query": "what causes pipes to vibrate",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "745469",
+          "query": "what is evidence discovery",
+          "success": false,
+          "num_results": 0
+        }
+      ]
+    },
+    {
+      "batch_index": 17,
+      "candidate_ids": [
+        "185397",
+        "536791"
+      ],
+      "results": [
+        {
+          "query_id": "185397",
+          "query": "fastest lamborghini",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "536791",
+          "query": "viable meaning?",
+          "success": false,
+          "num_results": 0
+        }
+      ]
+    },
+    {
+      "batch_index": 18,
+      "candidate_ids": [
+        "1017348",
+        "672433"
+      ],
+      "results": [
+        {
+          "query_id": "1017348",
+          "query": "which philosopher believed that only philosophers were capable of governing societies?",
+          "success": false,
+          "num_results": 0
+        },
+        {
+          "query_id": "672433",
+          "query": "what is A1C levels",
+          "success": false,
+          "num_results": 0
+        }
+      ]
+    },
+    {
+      "batch_index": 19,
+      "candidate_ids": [
+        "22231",
+        "258337"
+      ],
+      "results": [
+        {
+          "query_id": "22231",
+          "query": "are eggs or grapes better to fight colds",
+          "success": true,
+          "num_results": 50
+        },
+        {
+          "query_id": "258337",
+          "query": "how long does it take to walk a quarter mile",
+          "success": false,
+          "num_results": 0
+        }
+      ]
+    },
+    {
+      "batch_index": 20,
+      "candidate_ids": [
+        "929046"
+      ],
+      "results": [
+        {
+          "query_id": "929046",
+          "query": "what years were total eclipses in the past",
+          "success": false,
+          "num_results": 0
+        }
+      ]
+    },
+    {
+      "batch_index": 21,
+      "candidate_ids": [
+        "1023850"
+      ],
+      "results": [
+        {
+          "query_id": "1023850",
+          "query": "who are in the eagles",
+          "success": false,
+          "num_results": 0
+        }
+      ]
+    },
+    {
+      "batch_index": 22,
+      "candidate_ids": [
+        "467612"
+      ],
+      "results": [
+        {
+          "query_id": "467612",
+          "query": "oasis hospital contact number",
+          "success": false,
+          "num_results": 0
+        }
+      ]
+    },
+    {
+      "batch_index": 23,
+      "candidate_ids": [
+        "1055505"
+      ],
+      "results": [
+        {
+          "query_id": "1055505",
+          "query": "continual define",
+          "success": false,
+          "num_results": 0
+        }
+      ]
+    },
+    {
+      "batch_index": 24,
+      "candidate_ids": [
+        "126821"
+      ],
+      "results": [
+        {
+          "query_id": "126821",
+          "query": "define scooped out",
+          "success": true,
+          "num_results": 50
+        }
+      ]
+    }
+  ]
+}

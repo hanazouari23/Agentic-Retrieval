@@ -1,0 +1,151 @@
+query_id,query,new_query,action_name,query_length,score_spread,score_entropy,step,ndcg_before,ndcg_after,recall_before,recall_after,cumulative_cost,cumulative_latency_ms
+1093322,longest-tenured cast member of saturday night live,longest-tenured cast member of saturday night live,STOP,7.0,3.0870492458343506,0.5508396029472351,1,0.0,0.0,0.0,0.0,0.0,0.0
+922335,what was the reason for the snake war,what was the reason for the snake war,STOP,8.0,0.6178894639015198,3.6024062633514404,1,0.0,0.0,0.0,0.0,0.0,0.0
+999637,where is volbeat from?,where is volbeat from?,STOP,4.0,2.7172951698303223,2.074551582336426,1,0.4722693621479587,0.4722693621479587,1.0,1.0,0.0,0.0
+135386,definition of imagination,definition of imagination,STOP,3.0,0.6913629770278931,3.564051389694214,1,0.2242438242175754,0.2242438242175754,1.0,1.0,0.0,0.0
+1007550,when can a child sit in the front seat of a car,when can a child sit in the front seat of a car,STOP,12.0,0.6957806348800659,3.6403379440307617,1,0.0,0.0,0.0,0.0,0.0,0.0
+1086075,what causes small bumps on your hands,what causes small bumps on your hands,STOP,7.0,0.5495002269744873,3.71974515914917,1,0.0,0.0,0.0,0.0,0.0,0.0
+1032011,who is dean heller?,who is dean heller?,STOP,4.0,2.14810848236084,1.584573745727539,1,0.0,0.0,0.0,0.0,0.0,0.0
+384406,how to unlock duty roulette,how to unlock duty roulette,STOP,5.0,2.1903016567230225,1.205734133720398,1,0.0,0.0,0.0,0.0,0.0,0.0
+472024,pass the muster meaning,pass the muster meaning,STOP,4.0,2.3570375442504883,1.4439594745635986,1,0.0,0.0,0.0,0.0,0.0,0.0
+780613,what is our security system,what is our security system,STOP,5.0,0.0724763870239257,3.909278869628906,1,0.0,0.0,0.0,0.0,0.0,0.0
+1099816,homologs definition,homologs definition,STOP,2.0,0.5825890302658081,3.625149726867676,1,0.3333333333333333,0.3333333333333333,1.0,1.0,0.0,0.0
+1098860,how is page yield calculated for ink cartridge,how is page yield calculated for ink cartridge,STOP,8.0,1.0630888938903809,2.249051809310913,1,0.0,0.0,0.0,0.0,0.0,0.0
+818798,what is the difference in a c corp or s corp,what is the difference in a c corp or s corp,STOP,11.0,1.1352733373641968,3.082801103591919,1,0.0,0.0,0.0,0.0,0.0,0.0
+1003997,where was the princess bride filmed,where was the princess bride filmed,STOP,6.0,1.8546288013458248,2.2412750720977783,1,0.0,0.0,0.0,0.0,0.0,0.0
+42568,average salary for public relations manager,average salary for public relations manager,STOP,6.0,0.9323588609695436,3.305196523666382,1,0.0,0.0,0.0,0.0,0.0,0.0
+1100167,guayana venezuela,guayana venezuela,STOP,2.0,1.4990590810775757,2.767707347869873,1,1.0,1.0,1.0,1.0,0.0,0.0
+704072,what is a transit number,what is a transit number,STOP,5.0,0.2539635598659515,3.879432201385498,1,0.0,0.0,0.0,0.0,0.0,0.0
+1022178,what prevents wound healing,what prevents wound healing,STOP,4.0,0.2683330476284027,3.8684163093566895,1,0.0,0.0,0.0,0.0,0.0,0.0
+499568,smoking teeth oral cancer,smoking teeth oral cancer,STOP,4.0,0.7692537307739258,3.5204555988311768,1,0.0,0.0,0.0,0.0,0.0,0.0
+1059601,what is block paintings,what is block paintings,STOP,4.0,0.3737615048885345,3.832584142684937,1,0.0,0.0,0.0,0.0,0.0,0.0
+862742,what is whey powder made from,what is whey powder made from,STOP,6.0,0.3027702867984772,3.8583884239196777,1,0.0,0.0,0.0,0.0,0.0,0.0
+169778,does oil pulling heal cavities,does oil pulling heal cavities,STOP,5.0,2.286130428314209,1.9905016422271729,1,0.0,0.0,0.0,0.0,0.0,0.0
+944700,when do symptoms of seasonal affective disorder start?,when do symptoms of seasonal affective disorder start?,STOP,8.0,1.981475114822388,2.0920052528381348,1,0.0,0.0,0.0,0.0,0.0,0.0
+34015,average cost of maid service,average cost of maid service,STOP,5.0,1.6038861274719238,2.4896748065948486,1,0.0,0.0,0.0,0.0,0.0,0.0
+987230,who sings unforgettable,who sings unforgettable,STOP,3.0,1.2550197839736938,2.813614845275879,1,0.0,0.0,0.0,0.0,0.0,0.0
+359040,how to find regular payback period,how to find regular payback period,STOP,6.0,0.7757096886634827,3.2659788131713867,1,0.0,0.0,0.0,0.0,0.0,0.0
+526671,types of business entities,types of business entities,STOP,4.0,0.0992674902081489,3.906838893890381,1,0.0,0.0,0.0,0.0,0.0,0.0
+756949,what is iboss,what is iboss,STOP,3.0,4.697332382202148,0.4666857719421386,1,0.0,0.0,0.0,0.0,0.0,0.0
+453705,miff meaning,miff meaning,STOP,2.0,2.422152280807495,0.6840460896492004,1,1.0,1.0,1.0,1.0,0.0,0.0
+984434,where is highgarden where the tyrells are from,where is highgarden where the tyrells are from,STOP,8.0,4.953964710235596,0.3392503261566162,1,0.0,0.0,0.0,0.0,0.0,0.0
+833268,what is the monthly cost of hulu,what is the monthly cost of hulu,STOP,7.0,0.7591450810432434,3.511833429336548,1,0.0,0.0,0.0,0.0,0.0,0.0
+1080537,wright city mo population,wright city mo population,STOP,4.0,1.298028826713562,2.69138765335083,1,1.0,1.0,1.0,1.0,0.0,0.0
+1087105,what are the crimes classified as economic corruption and financial crimes,what are the crimes classified as economic corruption and financial crimes,STOP,11.0,2.062990427017212,1.6874101161956787,1,1.0,1.0,1.0,1.0,0.0,0.0
+1063177,why did spock die in wrath of khan,why did spock die in wrath of khan,STOP,8.0,4.052407741546631,1.7022199630737305,1,0.0,0.0,0.0,0.0,0.0,0.0
+1090987,roselle nj what county,roselle nj what county,STOP,4.0,1.380677580833435,2.380820274353028,1,0.0,0.0,0.0,0.0,0.0,0.0
+952388,when is the best time to see northern lights?,when is the best time to see northern lights?,STOP,9.0,0.253548264503479,3.877693891525269,1,0.0,0.0,0.0,0.0,0.0,0.0
+277799,how many calories in tomatillo sauce,how many calories in tomatillo sauce,STOP,6.0,2.1768112182617188,1.685710310935974,1,0.0,0.0,0.0,0.0,0.0,0.0
+1073721,why ph levels are important in hydroponics,why ph levels are important in hydroponics,STOP,7.0,1.2662326097488403,2.332218170166016,1,0.0,0.0,0.0,0.0,0.0,0.0
+1094191,is common law marriage legal in what states,is common law marriage legal in what states,STOP,8.0,0.4743976294994354,3.795025825500488,1,0.0,0.0,0.0,0.0,0.0,0.0
+541135,was there a true bagger vance,was there a true bagger vance,STOP,6.0,4.56710147857666,0.7833652496337891,1,0.0,0.0,0.0,0.0,0.0,0.0
+769630,what is meant by a blind copy in an email,what is meant by a blind copy in an email,STOP,10.0,1.148262619972229,2.5395357608795166,1,0.0,0.0,0.0,0.0,0.0,0.0
+1095942,how much ibuprofen can you take in a day,how much ibuprofen can you take in a day,STOP,9.0,0.5697780251502991,3.7199020385742183,1,0.0,0.0,0.0,0.0,0.0,0.0
+523621,tranquilizing definition,tranquilizing definition,STOP,2.0,1.6037219762802124,2.7518389225006104,1,0.3154648767857287,0.3154648767857287,1.0,1.0,0.0,0.0
+1067826,what is a router meaning,what is a router meaning,STOP,5.0,0.4124428331851959,3.796990394592285,1,0.0,0.0,0.0,0.0,0.0,0.0
+1036800,who is ovid in greek mythology,who is ovid in greek mythology,STOP,6.0,1.2998899221420288,2.6898117065429688,1,0.0,0.0,0.0,0.0,0.0,0.0
+1091688,phone number for bc transit junction,phone number for bc transit junction,STOP,6.0,1.0213147401809692,2.770324945449829,1,0.0,0.0,0.0,0.0,0.0,0.0
+527769,types of flowering cactus,types of flowering cactus,STOP,4.0,0.986700713634491,3.1889686584472656,1,0.0,0.0,0.0,0.0,0.0,0.0
+266760,how long should i boil corn on the cob?,how long should i boil corn on the cob?,STOP,9.0,1.808868169784546,2.5361669063568115,1,0.0,0.0,0.0,0.0,0.0,0.0
+1083945,what does distraction mean,what does distraction mean,STOP,4.0,0.4637733995914459,3.78044056892395,1,0.0,0.0,0.0,0.0,0.0,0.0
+989296,who is sakura haruno,who is sakura haruno,STOP,4.0,1.7463414669036863,1.8674578666687007,1,0.0,0.0,0.0,0.0,0.0,0.0
+1087061,what are the early signs of colon cancer?,what are the early signs of colon cancer?,STOP,8.0,0.5901983976364136,3.699370622634888,1,0.0,0.0,0.0,0.0,0.0,0.0
+73119,can running strengthen back,can running strengthen back,STOP,4.0,0.4352147579193115,3.802978992462158,1,0.0,0.0,0.0,0.0,0.0,0.0
+861169,what is viral stomatitis,what is viral stomatitis,STOP,4.0,2.208477735519409,2.436141014099121,1,1.0,1.0,1.0,1.0,0.0,0.0
+1096049,how much does nanny cost,how much does nanny cost,STOP,5.0,1.08232319355011,3.365447998046875,1,0.0,0.0,0.0,0.0,0.0,0.0
+1085510,carewell urgent,carewell urgent,STOP,2.0,2.634355068206787,3.043097972869873,1,0.430676558073393,0.430676558073393,1.0,1.0,0.0,0.0
+257335,how long does it take to get your lottery jackpot check?,how long does it take to get your lottery jackpot check?,STOP,11.0,0.8276160359382629,2.983466386795044,1,0.0,0.0,0.0,0.0,0.0,0.0
+281704,how many days to defrost,how many days to defrost,STOP,5.0,0.4715483486652374,3.754429340362549,1,0.3333333333333333,0.3333333333333333,1.0,1.0,0.0,0.0
+607855,what county is junction city ar in,what county is junction city ar in,STOP,7.0,1.481689214706421,1.3039404153823853,1,0.0,0.0,0.0,0.0,0.0,0.0
+1086874,what are the requirements for bethune cookman,what are the requirements for bethune cookman,STOP,7.0,3.289210557937622,1.4416499137878418,1,0.0,0.0,0.0,0.0,0.0,0.0
+329114,how much to have your house reshingled,how much to have your house reshingled,STOP,7.0,2.3974032402038574,0.4213602244853973,1,0.0,0.0,0.0,0.0,0.0,0.0
+112318,crate engine how heavy,crate engine how heavy,STOP,4.0,1.0508222579956057,2.9595603942871094,1,0.0,0.0,0.0,0.0,0.0,0.0
+548254,wenatchee washington population,wenatchee washington population,STOP,3.0,1.2126014232635498,3.4326441287994385,1,1.0,1.0,1.0,1.0,0.0,0.0
+1096840,how many people can sit in a car at sci fye theater disney,how many people can sit in a car at sci fye theater disney,STOP,13.0,2.4354519844055176,0.6269184350967407,1,0.0,0.0,0.0,0.0,0.0,0.0
+622658,what do cpa's earn,what do cpa's earn,STOP,4.0,1.6704291105270386,2.557663679122925,1,0.0,0.0,0.0,0.0,0.0,0.0
+896383,what software would they need to open the iges format,what software would they need to open the iges format,STOP,10.0,2.499429225921631,1.2116581201553345,1,0.0,0.0,0.0,0.0,0.0,0.0
+1100541,fitchburg state university number,fitchburg state university number,STOP,4.0,1.539441466331482,2.363802671432495,1,0.0,0.0,0.0,0.0,0.0,0.0
+1045374,what is targeted victory,what is targeted victory,STOP,4.0,1.0582506656646729,1.6670178174972534,1,1.0,1.0,1.0,1.0,0.0,0.0
+778890,what is odin pit file,what is odin pit file,STOP,5.0,2.3464162349700928,0.8814677596092224,1,0.0,0.0,0.0,0.0,0.0,0.0
+1089022,vehicle's what is a tahoe,vehicle's what is a tahoe,STOP,5.0,1.4016205072402954,3.176147699356079,1,0.0,0.0,0.0,0.0,0.0,0.0
+612670,what county is sheridan,what county is sheridan,STOP,4.0,0.6518709659576416,3.678370714187622,1,0.3868528072345416,0.3868528072345416,1.0,1.0,0.0,0.0
+1091719,petrol price in pakistan,petrol price in pakistan,STOP,4.0,2.6572067737579346,1.1790937185287476,1,0.0,0.0,0.0,0.0,0.0,0.0
+1043658,what is the bracket,what is the bracket,STOP,4.0,0.0795720070600509,3.90860915184021,1,0.0,0.0,0.0,0.0,0.0,0.0
+759038,what is infinite tv,what is infinite tv,STOP,4.0,0.5990892052650452,3.656048059463501,1,0.0,0.0,0.0,0.0,0.0,0.0
+995825,where is the graphic card located in the cpu,where is the graphic card located in the cpu,STOP,9.0,1.0984889268875122,2.836482524871826,1,0.0,0.0,0.0,0.0,0.0,0.0
+585378,what causes anemia symptoms,what causes anemia symptoms,STOP,4.0,0.1523330956697464,3.899649620056152,1,0.0,0.0,0.0,0.0,0.0,0.0
+699872,what is a shotgun,what is a shotgun,STOP,4.0,0.0804162472486496,3.908698320388794,1,0.0,0.0,0.0,0.0,0.0,0.0
+800652,what is subsidized vs unsubsidized,what is subsidized vs unsubsidized,STOP,5.0,2.841670274734497,2.487294435501098,1,0.0,0.0,0.0,0.0,0.0,0.0
+641618,what does it mean your body in ketosis,what does it mean your body in ketosis,STOP,8.0,0.4521397948265075,3.794552803039551,1,0.0,0.0,0.0,0.0,0.0,0.0
+555750,what are boot devices?,what are boot devices?,STOP,4.0,0.1598879694938659,3.898226499557495,1,0.0,0.0,0.0,0.0,0.0,0.0
+990414,who is james b duke,who is james b duke,STOP,5.0,0.6787245273590088,3.530855655670166,1,0.0,0.0,0.0,0.0,0.0,0.0
+1094578,average window installation cost,average window installation cost,STOP,4.0,0.2336970567703247,3.884388208389282,1,0.0,0.0,0.0,0.0,0.0,0.0
+568585,what are the criminal charges for  passing bad checks,what are the criminal charges for  passing bad checks,STOP,9.0,2.258110761642456,1.1217811107635498,1,0.0,0.0,0.0,0.0,0.0,0.0
+548099,wellcare mike vice president,wellcare mike vice president,STOP,4.0,2.5748088359832764,0.3811097145080566,1,0.0,0.0,0.0,0.0,0.0,0.0
+1087317,what are signs of anxiety in your chest,what are signs of anxiety in your chest,STOP,8.0,0.4826699197292328,3.773617029190064,1,0.25,0.25,1.0,1.0,0.0,0.0
+952520,when is the best time to visit spain?,when is the best time to visit spain?,STOP,8.0,0.477916955947876,3.776837110519409,1,0.0,0.0,0.0,0.0,0.0,0.0
+1005113,when do you start planting from seed,when do you start planting from seed,STOP,7.0,0.1863507330417633,3.89265513420105,1,0.0,0.0,0.0,0.0,0.0,0.0
+1013267,what vitamins help clear vision,what vitamins help clear vision,STOP,5.0,0.4784204363822937,3.790790319442749,1,0.0,0.0,0.0,0.0,0.0,0.0
+450788,mechanical errors definition,mechanical errors definition,STOP,3.0,0.5027562975883484,3.738833427429199,1,0.0,0.0,0.0,0.0,0.0,0.0
+129837,define: wrongful prosecution,define: wrongful prosecution,STOP,3.0,1.370118498802185,2.166357040405273,1,0.0,0.0,0.0,0.0,0.0,0.0
+864507,what is your mandible,what is your mandible,STOP,4.0,0.3613735437393188,3.82562518119812,1,0.3868528072345416,0.3868528072345416,1.0,1.0,0.0,0.0
+792977,what is sacrococcygeal,what is sacrococcygeal,STOP,3.0,1.2257531881332395,3.3907694816589355,1,0.244650542118226,0.244650542118226,1.0,1.0,0.0,0.0
+4947,Ludacris Net Worth,Ludacris Net Worth,STOP,3.0,2.192918300628662,2.2950215339660645,1,0.482475559390755,0.482475559390755,1.0,1.0,0.0,0.0
+1051422,what is mean streaming,what is mean streaming,STOP,4.0,0.164917454123497,3.896679162979126,1,0.0,0.0,0.0,0.0,0.0,0.0
+185276,fastest car in the world motor tr,fastest car in the world motor tr,STOP,7.0,1.1117544174194336,2.7811641693115234,1,0.0,0.0,0.0,0.0,0.0,0.0
+1087074,what are the different forms of marijuana,what are the different forms of marijuana,STOP,7.0,0.332803726196289,3.847177505493164,1,0.0,0.0,0.0,0.0,0.0,0.0
+627085,what do you use for oxygen facial machines,what do you use for oxygen facial machines,STOP,8.0,1.6909737586975098,2.0943918228149414,1,0.0,0.0,0.0,0.0,0.0,0.0
+1062332,what is an rs in money,what is an rs in money,STOP,6.0,0.3218218982219696,3.849313735961914,1,0.0,0.0,0.0,0.0,0.0,0.0
+703383,what is a thoracentesis,what is a thoracentesis,STOP,4.0,1.181137204170227,3.324103593826294,1,0.0,0.0,0.0,0.0,0.0,0.0
+1093094,benefit to prostate massage,benefit to prostate massage,STOP,4.0,1.7682807445526123,2.817213535308838,1,0.0,0.0,0.0,0.0,0.0,0.0
+456016,moon spiritual meaning,moon spiritual meaning,STOP,3.0,0.505419909954071,3.770627975463867,1,0.0,0.0,0.0,0.0,0.0,0.0
+30956,average annual income for rn in illinois,average annual income for rn in illinois,STOP,7.0,1.5178301334381104,1.290229320526123,1,1.0,1.0,1.0,1.0,0.0,0.0
+1084769,what do lenders use as you dti,what do lenders use as you dti,STOP,7.0,0.5818759202957153,3.7310523986816406,1,0.0,0.0,0.0,0.0,0.0,0.0
+1048917,what is operating system misconfiguration,what is operating system misconfiguration,STOP,5.0,1.6399260759353638,3.072927713394165,1,0.0,0.0,0.0,0.0,0.0,0.0
+450851,media definition examples,media definition examples,STOP,3.0,0.1601241081953048,3.897959709167481,1,0.2153382790366965,0.2153382790366965,1.0,1.0,0.0,0.0
+1089683,thermo fisher scientific benefits,thermo fisher scientific benefits,STOP,4.0,1.5196619033813477,2.740100622177124,1,0.2626495350371935,0.2626495350371935,1.0,1.0,0.0,0.0
+96602,"concomitant, definition","concomitant, definition",STOP,2.0,1.0522825717926023,3.4479007720947266,1,0.3562071871080222,0.3562071871080222,1.0,1.0,0.0,0.0
+1073640,what is a fetty wap,what is a fetty wap,STOP,5.0,3.508484125137329,2.813929319381714,1,0.0,0.0,0.0,0.0,0.0,0.0
+64528,can anyone take prenatal vitamins?,can anyone take prenatal vitamins?,STOP,5.0,0.9595564007759094,2.282437324523926,1,0.0,0.0,0.0,0.0,0.0,0.0
+916901,what vitamin deficiency causes mouth sores,what vitamin deficiency causes mouth sores,STOP,6.0,0.9657241702079772,3.104820489883423,1,0.0,0.0,0.0,0.0,0.0,0.0
+851813,what is the treatment of throat voice box?,what is the treatment of throat voice box?,STOP,8.0,0.6301052570343018,3.6287059783935542,1,0.0,0.0,0.0,0.0,0.0,0.0
+1042399,who is tom cavanagh?,who is tom cavanagh?,STOP,4.0,2.520378589630127,2.131503105163574,1,0.0,0.0,0.0,0.0,0.0,0.0
+236582,how is dry eyes preventable,how is dry eyes preventable,STOP,5.0,1.10759174823761,3.066227912902832,1,0.0,0.0,0.0,0.0,0.0,0.0
+208339,how big can caimans get,how big can caimans get,STOP,5.0,1.5006144046783447,2.1118733882904053,1,0.3562071871080222,0.3562071871080222,1.0,1.0,0.0,0.0
+724579,what is blackwater called now,what is blackwater called now,STOP,5.0,0.9570645689964294,2.9617714881896973,1,0.0,0.0,0.0,0.0,0.0,0.0
+418926,is narcotics anonymous effective,is narcotics anonymous effective,STOP,4.0,0.8080294132232666,3.268483638763428,1,0.0,0.0,0.0,0.0,0.0,0.0
+1088379,calories for chocolate chips,calories for chocolate chips,STOP,4.0,0.1749214828014373,3.891659259796143,1,0.0,0.0,0.0,0.0,0.0,0.0
+1101228,does bromelain help with weight loss,does bromelain help with weight loss,STOP,6.0,1.8321062326431277,2.1510002613067627,1,0.0,0.0,0.0,0.0,0.0,0.0
+112718,crew fort worth application,crew fort worth application,STOP,4.0,0.8620244264602661,3.090548276901245,1,0.430676558073393,0.430676558073393,1.0,1.0,0.0,0.0
+998965,definition diagram,definition diagram,STOP,2.0,0.1636884361505508,3.897287368774414,1,0.0,0.0,0.0,0.0,0.0,0.0
+61623,can Climbing Roses grow as bush roses?,can Climbing Roses grow as bush roses?,STOP,7.0,1.1852880716323853,3.157822132110596,1,0.2037950470905062,0.2037950470905062,1.0,1.0,0.0,0.0
+591993,what causes spots on tree leaves,what causes spots on tree leaves,STOP,6.0,0.3481613099575043,3.846437692642212,1,0.0,0.0,0.0,0.0,0.0,0.0
+1062511,what is an office administrative assistant salary in alabama,what is an office administrative assistant salary in alabama,STOP,9.0,1.2968204021453855,2.132854461669922,1,0.5,0.5,1.0,1.0,0.0,0.0
+1014264,what type of seating is on condor,what type of seating is on condor,STOP,7.0,0.8332439661026001,2.8274528980255127,1,0.0,0.0,0.0,0.0,0.0,0.0
+1040532,what is the difference between server ram and pc ram,what is the difference between server ram and pc ram,STOP,10.0,1.4896588325500488,1.9087663888931277,1,0.0,0.0,0.0,0.0,0.0,0.0
+890532,what record label is shawn mendes signed to,what record label is shawn mendes signed to,STOP,8.0,2.787019968032837,0.6890617609024048,1,1.0,1.0,1.0,1.0,0.0,0.0
+108622,cost root canal,cost root canal,STOP,3.0,0.1327419131994247,3.902880907058716,1,0.0,0.0,0.0,0.0,0.0,0.0
+900696,what team was shelton benjamin a part of wwe,what team was shelton benjamin a part of wwe,STOP,9.0,2.7192368507385254,1.4249682426452637,1,0.5,0.5,1.0,1.0,0.0,0.0
+1091246,property premises meaning,property premises meaning,STOP,3.0,0.5077083706855774,3.727762222290039,1,0.0,0.0,0.0,0.0,0.0,0.0
+1088856,war thunder launcher,war thunder launcher,STOP,3.0,1.7377912998199463,2.682470321655273,1,0.6309297535714575,0.6309297535714575,1.0,1.0,0.0,0.0
+150087,different types led lights,different types led lights,STOP,4.0,0.1335721760988235,3.902609586715698,1,0.0,0.0,0.0,0.0,0.0,0.0
+1017529,what to do for a sore wrist,what to do for a sore wrist,STOP,7.0,1.0596486330032349,2.935168504714966,1,0.6309297535714575,0.6309297535714575,1.0,1.0,0.0,0.0
+97295,consolidate function,consolidate function,STOP,2.0,0.7262093424797058,3.665922164916992,1,0.2626495350371935,0.2626495350371935,1.0,1.0,0.0,0.0
+1021065,what series are on amazon prime,what series are on amazon prime,STOP,6.0,0.2249390184879303,3.8828954696655273,1,0.0,0.0,0.0,0.0,0.0,0.0
+144491,did mark wahlberg really sing in rock star movie,did mark wahlberg really sing in rock star movie,STOP,9.0,2.457951068878174,0.0642420127987861,1,0.0,0.0,0.0,0.0,0.0,0.0
+1009527,what's grounding,what's grounding,STOP,2.0,0.5080733895301819,3.7394015789031982,1,0.0,0.0,0.0,0.0,0.0,0.0
+1023025,what part of florida is patrick air force base,what part of florida is patrick air force base,STOP,9.0,2.0153677463531494,1.4388842582702637,1,0.0,0.0,0.0,0.0,0.0,0.0
+1035228,who is legalshield,who is legalshield,STOP,3.0,3.0680079460144043,2.9358813762664795,1,0.0,0.0,0.0,0.0,0.0,0.0
+1093487,laws synonyms,laws synonyms,STOP,2.0,0.1400112807750702,3.901578903198242,1,0.2018490865820998,0.2018490865820998,1.0,1.0,0.0,0.0
+874914,what makes a drink a crush,what makes a drink a crush,STOP,6.0,0.6579470038414001,3.608945608139038,1,0.0,0.0,0.0,0.0,0.0,0.0
+988787,who is the judge michael day district court of south dakota,who is the judge michael day district court of south dakota,STOP,11.0,1.347643256187439,1.3357079029083252,1,1.0,1.0,1.0,1.0,0.0,0.0
+1041043,what is the difference between a c-corp and a s-corp?,what is the difference between a c-corp and a s-corp?,STOP,10.0,1.305209398269653,2.782542943954468,1,0.0,0.0,0.0,0.0,0.0,0.0
+1093038,meaning of house arrest,meaning of house arrest,STOP,4.0,0.5325977206230164,3.6963396072387695,1,0.0,0.0,0.0,0.0,0.0,0.0
+669046,what herbs go with salmon,what herbs go with salmon,STOP,5.0,0.6145418286323547,3.6596519947052,1,0.0,0.0,0.0,0.0,0.0,0.0
+227591,how does society affect the individual,how does society affect the individual,STOP,6.0,0.3415993452072143,3.8381035327911377,1,0.0,0.0,0.0,0.0,0.0,0.0
+946825,when does la liga espanola start,when does la liga espanola start,STOP,6.0,3.000173091888428,0.0926616787910461,1,0.2890648263178879,0.2890648263178879,1.0,1.0,0.0,0.0
+872632,what language is tigrinya,what language is tigrinya,STOP,4.0,2.215947389602661,1.6651692390441897,1,0.0,0.0,0.0,0.0,0.0,0.0
+1065160,what is a wrongful act for directors and officers,what is a wrongful act for directors and officers,STOP,9.0,1.8102086782455444,1.9020509719848635,1,0.0,0.0,0.0,0.0,0.0,0.0
+783433,what is philosophical anthropology,what is philosophical anthropology,STOP,4.0,1.7698792219161987,1.831735134124756,1,0.0,0.0,0.0,0.0,0.0,0.0
+22231,are eggs or grapes better to fight colds,are eggs or grapes better to fight colds,STOP,8.0,1.1408365964889526,2.444885492324829,1,0.0,0.0,0.0,0.0,0.0,0.0
+126821,define scooped out,define scooped out,STOP,3.0,1.0000488758087158,2.691403865814209,1,0.3154648767857287,0.3154648767857287,1.0,1.0,0.0,0.0

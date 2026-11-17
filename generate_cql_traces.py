@@ -71,8 +71,8 @@ SIM_TOP_K_PRF = 10
 SIM_NDCG_K = 50
 SIM_RECALL_K = 100
 
-RETRIEVER_MAX_RETRIES = 5
-QUERY_DELAY_S = 0.5
+RETRIEVER_MAX_RETRIES = 1
+QUERY_DELAY_S = 1.5
 FAILURE_BACKOFF_S = 5.0
 
 
@@ -159,7 +159,7 @@ def load_initial_retrieval(
         if doc_ids is not None and len(doc_ids) > 0:
             return doc_ids, doc_scores, corpus_data
         if attempt < max_retries - 1:
-            wait = min(2 ** attempt, 16)
+            wait = min(2 ** attempt, 4)
             logger.warning(
                 "Retriever returned no documents for query %r (attempt %d/%d); retrying in %ds",
                 query, attempt + 1, max_retries, wait,

@@ -67,6 +67,15 @@ def set_seed(seed: int) -> None:
         torch.cuda.manual_seed_all(seed)
 
 
+def load_query_ids(csv_path: Path) -> List[str]:
+    """Load ordered unique query IDs from a single-column CSV."""
+    import pandas as pd
+    df = pd.read_csv(csv_path, dtype=str)
+    if "query_id" not in df.columns:
+        raise ValueError(f"No query_id column in {csv_path}")
+    return [str(qid) for qid in df["query_id"].unique()]
+
+
 def load_initial_retrieval(
     query: str,
     retriever_func: callable,
@@ -134,8 +143,16 @@ def generate_policy_traces(
     sim: Simulation,
     retriever: callable,
     output_path: Path,
+    append: bool = False,
 ) -> None:
-    """Generate and save traces for one baseline policy."""
+    """Generate and save traces for one baseline policy.
+
+    If ``append`` is True and ``output_path`` already exists, new rows are
+    appended to the existing file instead of overwriting it. This is useful
+    for resuming a crashed or interrupted run.
+    """
+    import os
+
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     fieldnames = [
@@ -162,14 +179,26 @@ def generate_policy_traces(
         "timeout",
     ]
 
-    temporary_path = output_path.with_suffix(".tmp")
     rows_written = 0
     queries_failed = 0
     queries_succeeded = 0
 
-    with open(temporary_path, "w", newline="", encoding="utf-8") as f:
+    if append and output_path.exists():
+        # Resume: append directly to the existing output file.
+        file_mode = "a"
+        write_header = False
+        logger.info("Appending to existing output file: %s", output_path)
+    else:
+        # Fresh run: write to a temp file and atomically replace the output.
+        file_mode = "w"
+        write_header = True
+
+    temporary_path = output_path.with_suffix(".tmp") if not append else output_path
+
+    with open(temporary_path, file_mode, newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
+        if write_header:
+            writer.writeheader()
 
         for idx, (query_id, query) in enumerate(queries, start=1):
             logger.info("[%s] [%d/%d] Rolling out query_id=%s | %s", policy, idx, len(queries), query_id, query[:80])
@@ -193,6 +222,7 @@ def generate_policy_traces(
                     writer.writerow(transition_to_row(query_id, query, step_idx, transition))
                     rows_written += 1
 
+                f.flush()
                 queries_succeeded += 1
                 logger.info("[%s] [%d/%d] SAVED %d transitions", policy, idx, len(queries), len(trajectory))
 
@@ -202,8 +232,8 @@ def generate_policy_traces(
 
         f.flush()
 
-    import os
-    os.replace(temporary_path, output_path)
+    if not append:
+        os.replace(temporary_path, output_path)
 
     logger.info("=" * 70)
     logger.info("[%s] baseline rollout complete", policy)
@@ -217,17 +247,34 @@ def generate_policy_traces(
 def main(args: argparse.Namespace) -> None:
     set_seed(RANDOM_SEED)
 
-    # Load the exact query IDs used by the CQL traces.
-    cql_path = Path(CQL_TRACES_PATH)
-    if not cql_path.exists():
-        raise FileNotFoundError(f"CQL traces not found at {cql_path}")
-
     import pandas as pd
-    df_cql = pd.read_csv(cql_path)
-    query_ids = [str(qid) for qid in df_cql["query_id"].unique().tolist()]
-    logger.info("Loaded %d query IDs from %s", len(query_ids), CQL_TRACES_PATH)
 
-    # Load queries and filter to the CQL query IDs.
+    # Load target query IDs either from an explicit list or from the CQL traces.
+    if args.query_ids:
+        query_ids_path = Path(args.query_ids)
+        if not query_ids_path.exists():
+            raise FileNotFoundError(f"Query IDs file not found at {query_ids_path}")
+        query_ids = load_query_ids(query_ids_path)
+        logger.info("Loaded %d query IDs from %s", len(query_ids), query_ids_path)
+    else:
+        cql_path = Path(CQL_TRACES_PATH)
+        if not cql_path.exists():
+            raise FileNotFoundError(f"CQL traces not found at {cql_path}")
+        df_cql = pd.read_csv(cql_path)
+        query_ids = [str(qid) for qid in df_cql["query_id"].unique().tolist()]
+        logger.info("Loaded %d query IDs from %s", len(query_ids), CQL_TRACES_PATH)
+
+    # Skip query IDs already present in the resume-from file.
+    if args.resume_from:
+        resume_path = Path(args.resume_from)
+        if not resume_path.exists():
+            raise FileNotFoundError(f"Resume-from file not found at {resume_path}")
+        existing_ids = set(load_query_ids(resume_path))
+        logger.info("Found %d query IDs already in %s", len(existing_ids), resume_path)
+        query_ids = [qid for qid in query_ids if qid not in existing_ids]
+        logger.info("%d query IDs remaining to roll out", len(query_ids))
+
+    # Load queries and filter to the selected query IDs.
     queries_path = Path("data/topics.ms-marco-dev.tsv")
     qrels_path = Path("data/qrels.ms-marco-dev.tsv")
 
@@ -256,7 +303,11 @@ def main(args: argparse.Namespace) -> None:
 
     logger.info("Initializing ChatNoir BM25 retriever (msmarco-v2.1)")
     retriever_instance = Retriever(index="msmarco-v2.1")
-    retriever = create_retriever_callable(retriever_instance)
+    retriever = create_retriever_callable(
+        retriever_instance,
+        adaptive_top_k=True,
+        min_top_k=1,
+    )
 
     qr_agent = ReformulationAgent(
         embed_model=encoder,
@@ -287,7 +338,10 @@ def main(args: argparse.Namespace) -> None:
 
     output_dir = Path(OUTPUT_DIR)
     for policy in args.policies:
-        output_path = output_dir / f"{policy}_traces_50_msmarco_dev.csv"
+        if args.output_path:
+            output_path = Path(args.output_path)
+        else:
+            output_path = output_dir / f"{policy}_traces_50_msmarco_dev.csv"
         generate_policy_traces(
             policy=policy,
             queries=selected,
@@ -295,6 +349,7 @@ def main(args: argparse.Namespace) -> None:
             sim=sim,
             retriever=retriever,
             output_path=output_path,
+            append=args.append,
         )
 
 
@@ -318,5 +373,30 @@ if __name__ == "__main__":
         choices=POLICIES,
         help="Baseline policies to run",
     )
+    parser.add_argument(
+        "--query-ids",
+        type=str,
+        default=None,
+        help="Path to a single-column CSV of query IDs to roll out (overrides CQL traces default)",
+    )
+    parser.add_argument(
+        "--resume-from",
+        type=str,
+        default=None,
+        help="Path to an existing traces CSV; query IDs already present are skipped",
+    )
+    parser.add_argument(
+        "--output-path",
+        type=str,
+        default=None,
+        help="Explicit output CSV path (use with a single policy)",
+    )
+    parser.add_argument(
+        "--append",
+        action="store_true",
+        help="Append to the output file if it already exists (for resuming)",
+    )
     args = parser.parse_args()
+    if args.output_path and len(args.policies) > 1:
+        parser.error("--output-path can only be used with a single policy")
     main(args)
