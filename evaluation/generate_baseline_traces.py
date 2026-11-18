@@ -305,7 +305,7 @@ def main(args: argparse.Namespace) -> None:
     retriever_instance = Retriever(index="msmarco-v2.1")
     retriever = create_retriever_callable(
         retriever_instance,
-        adaptive_top_k=True,
+        adaptive_top_k=args.adaptive_top_k,
         min_top_k=1,
     )
 
@@ -395,6 +395,12 @@ if __name__ == "__main__":
         "--append",
         action="store_true",
         help="Append to the output file if it already exists (for resuming)",
+    )
+    parser.add_argument(
+        "--adaptive-top-k",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Enable adaptive top-k fallback on ChatNoir 500 errors",
     )
     args = parser.parse_args()
     if args.output_path and len(args.policies) > 1:

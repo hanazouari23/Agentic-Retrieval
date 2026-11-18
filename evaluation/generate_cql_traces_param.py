@@ -235,7 +235,7 @@ def main():
         rng.shuffle(shuffled)
 
     encoder = SentenceTransformer("all-MiniLM-L6-v2")
-    retriever_instance = Retriever(index="msmarco-v2.1-segmented")
+    retriever_instance = Retriever(index="msmarco-v2.1")
     retriever = create_retriever_callable(retriever_instance)
 
     qr_agent = ReformulationAgent(embed_model=encoder)
@@ -277,6 +277,7 @@ def main():
     rows_written = 0
     queries_failed = 0
     queries_succeeded = len(existing_qids)
+    written_qids: Set[str] = set(existing_qids)
     output_exists = output_path.exists() and output_path.stat().st_size > 0
 
     with open(output_path, "a", newline="", encoding="utf-8") as f:
@@ -287,8 +288,7 @@ def main():
         for query_id, query in shuffled:
             if queries_succeeded >= args.num_queries:
                 break
-            if query_id in existing_qids:
-                queries_succeeded += 1
+            if query_id in written_qids:
                 continue
 
             logger.info("Rolling out query_id=%s | %s", query_id, query[:80])
@@ -308,6 +308,7 @@ def main():
                     writer.writerow(transition_to_row(query_id, query, step_idx, transition))
                     rows_written += 1
                 f.flush()
+                written_qids.add(query_id)
                 queries_succeeded += 1
                 logger.info("SAVED %d transitions", len(trajectory))
                 time.sleep(0.5)
